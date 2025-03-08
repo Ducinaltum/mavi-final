@@ -147,14 +147,22 @@
   <ItemGroup>
     <ClCompile Include="ButtonState.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Gameplay.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="mavi-final.cpp" />
+    <ClCompile Include="PlayerShip.cpp" />
+    <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonState.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Gameplay.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="mavi-final.rc" />

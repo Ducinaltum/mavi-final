@@ -1,11 +1,12 @@
 #include "Game.h"
+#include "Gameplay.h"
 #include <iostream>
 #include "InputHandler.h"
 
 Game::Game(int alto, int ancho, std::string titulo) :
 	m_win(sf::VideoMode(alto, ancho), titulo)
 {
-	//InputHandler in;
+	m_activeScene = new Gameplay();
 	Go();
 }
 
@@ -20,10 +21,10 @@ void Game::Go()
 	while (m_win.isOpen())
 	{
 		/////Procesar eventos/////
-		//while (m_win.pollEvent(evt))
-		//{
-		//	ProcessEvent(evt);
-		//}
+		while (m_win.pollEvent(evt))
+		{
+			ProcessEvent(evt);
+		}
 		Input::InputHandler::HandleEvents();
 		/////Procesar colisiones/////
 		ProcessCollisions();
@@ -37,7 +38,7 @@ void Game::Go()
 
 void Game::ProcessEvent(Event& evt)
 {
-	Input::InputHandler::HandleEvents();
+	//Input::InputHandler::HandleEvents();
 }
 
 void Game::ProcessCollisions()
@@ -50,9 +51,9 @@ void Game::UpdateGame()
 
 void Game::DrawGame()
 {
-	sf::CircleShape shape(20.f);
-	shape.setFillColor(sf::Color::Green);
-	m_win.draw(shape);
+	//sf::CircleShape shape(20.f);
+	//shape.setFillColor(sf::Color::Green);
+	m_activeScene->Draw(m_win);
 }
 
 
