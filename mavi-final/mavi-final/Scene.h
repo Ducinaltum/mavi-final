@@ -7,6 +7,6 @@ protected:
 public:
 	virtual void ProcessCollisions() = 0;
 	virtual void Update(float dt) = 0;
-	virtual void Draw(sf::RenderWindow& window) = 0;
+	virtual void Draw(sf::RenderTexture& window) = 0;
 };
 

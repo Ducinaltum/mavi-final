@@ -1,0 +1,8 @@
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+#pragma once
+namespace Extensions
+{
+	float SqrdMagnitude(const sf::Vector2f& v);
+};
+

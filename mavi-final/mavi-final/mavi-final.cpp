@@ -5,11 +5,12 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
+#include "Globals.h"
 using namespace sf;
 
 int main()
 {
-    Game game(600, 400, "GAME!");
+    Game game(TARGET_WIDTH, TARGET_HEIGHT, "GAME!");
 
     return 0;
 }

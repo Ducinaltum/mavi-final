@@ -18,7 +18,7 @@ void Gameplay::Update(float dt)
 	}
 }
 
-void Gameplay::Draw(sf::RenderWindow& window)
+void Gameplay::Draw(sf::RenderTexture& window)
 {
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{

@@ -2,58 +2,90 @@
 #include "Gameplay.h"
 #include <iostream>
 #include "InputHandler.h"
+#include "Globals.h"
 
 Game::Game(int alto, int ancho, std::string titulo) :
-	m_win(sf::VideoMode(alto, ancho), titulo)
+	m_renderTarget(),
+	m_window(sf::VideoMode(alto, ancho), titulo) //This should be physical screen size
 {
+	m_renderTarget.create(alto, ancho);
 	m_activeScene = new Gameplay();
 	Go();
 }
 
-Game::~Game(void)
-{
-}
+Game::~Game(void) = default;
 
 void Game::Go()
 {
 	/////Objeto para recibir eventos/////
 	Event evt;
-	while (m_win.isOpen())
+	while (m_window.isOpen())
 	{
+		Time dt = deltaClock.restart();
+		float deltaTime = dt.asSeconds();
 		/////Procesar eventos/////
-		while (m_win.pollEvent(evt))
+		while (m_window.pollEvent(evt))
 		{
-			ProcessEvent(evt);
+			if (evt.type == sf::Event::Closed)
+				m_window.close();
 		}
 		Input::InputHandler::HandleEvents();
 		/////Procesar colisiones/////
 		ProcessCollisions();
 		/////Actualizar estados de objetos/////
-		UpdateGame();
-		m_win.clear();
+		UpdateGame(deltaTime);
+		m_renderTarget.clear(sf::Color::Black);
 		DrawGame();
-		m_win.display();
+		m_renderTarget.display();
+
+		sf::Sprite scaledSprite(m_renderTarget.getTexture());
+
+		/*
+		// Get window size
+		sf::Vector2u windowSize = m_window.getSize();
+
+		// Calculate scale factor
+		float scaleX = (float)windowSize.x / (float)TARGET_WIDTH;
+		float scaleY = (float)windowSize.y / (float)TARGET_HEIGHT;
+		float scale = std::min(scaleX, scaleY); // Maintain aspect ratio
+
+		// Center the scaled view in the window
+		float scaledWidth = TARGET_WIDTH * scale;
+		float scaledHeight = TARGET_HEIGHT * scale;
+		float offsetX = (windowSize.x - scaledWidth) / 2.0f;
+		float offsetY = (windowSize.y - scaledHeight) / 2.0f;
+
+
+		scaledSprite.setScale(scale, scale);
+		scaledSprite.setPosition(offsetX, offsetY);
+		*/
+
+		m_window.clear(Color(255, 0, 0, 255));
+		m_window.draw(scaledSprite);
+		m_window.display();
+
 	}
 }
 
 void Game::ProcessEvent(Event& evt)
 {
-	//Input::InputHandler::HandleEvents();
+
 }
 
 void Game::ProcessCollisions()
 {
 }
 
-void Game::UpdateGame()
+void Game::UpdateGame(float dt)
 {
+	m_activeScene->Update(dt);
 }
 
 void Game::DrawGame()
 {
 	//sf::CircleShape shape(20.f);
 	//shape.setFillColor(sf::Color::Green);
-	m_activeScene->Draw(m_win);
+	m_activeScene->Draw(m_renderTarget);
 }
 
 

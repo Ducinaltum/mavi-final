@@ -18,11 +18,11 @@ namespace Input
 		float movY = 0;
 		if (Keyboard::isKeyPressed(Keyboard::W))
 		{
-			movY += 1;
+			movY -= 1;
 		}
 		if (Keyboard::isKeyPressed(Keyboard::S))
 		{
-			movY -= 1;
+			movY += 1;
 		}
 		if (Keyboard::isKeyPressed(Keyboard::A))
 		{

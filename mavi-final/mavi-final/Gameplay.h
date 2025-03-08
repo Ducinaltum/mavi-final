@@ -6,12 +6,10 @@
 class Gameplay :
     public Scene
 {
-private:
-
 public:
 	Gameplay();
 	void ProcessCollisions();
 	void Update(float dt);
-	void Draw(sf::RenderWindow& window);
+	void Draw(sf::RenderTexture& window);
 };
 

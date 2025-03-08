@@ -146,9 +146,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ButtonState.cpp" />
+    <ClCompile Include="Extensions.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Gameplay.cpp" />
+    <ClCompile Include="Globals.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="mavi-final.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
@@ -156,9 +158,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonState.h" />
+    <ClInclude Include="Extensions.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Gameplay.h" />
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="resource.h" />

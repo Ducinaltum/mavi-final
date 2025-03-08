@@ -6,11 +6,13 @@ using namespace sf;
 class Game
 {
 private:
-	RenderWindow m_win;
+	Clock deltaClock;
+	RenderTexture m_renderTarget;
+	RenderWindow m_window;
 	Scene * m_activeScene;
 	void ProcessEvent(Event& evt);
 	void ProcessCollisions();
-	void UpdateGame();
+	void UpdateGame(float dt);
 	void DrawGame();
 public:
 	Game(int alto, int ancho, std::string titulo);
