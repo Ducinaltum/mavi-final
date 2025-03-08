@@ -145,15 +145,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="ButtonState.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="FirstLevel.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="mavi-final.cpp" />
+    <ClCompile Include="PhysicsObject.cpp" />
+    <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Behaviour.h" />
     <ClInclude Include="ButtonState.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="FirstLevel.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="PhysicsObject.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
