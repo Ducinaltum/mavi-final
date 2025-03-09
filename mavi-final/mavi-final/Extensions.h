@@ -4,5 +4,6 @@
 namespace Extensions
 {
 	float SqrdMagnitude(const sf::Vector2f& v);
+	float GetTargetScale(float targetWidth, sf::Texture& texture);
 };
 

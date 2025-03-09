@@ -1,11 +1,15 @@
 #pragma once
+#include <queue>
 #include "Scene.h"
 #include "GameObject.h"
 #include "PlayerShip.h"
+#include "Bullet.h"
 
 class Gameplay :
     public Scene
 {
+private:
+
 public:
 	Gameplay();
 	void ProcessCollisions();

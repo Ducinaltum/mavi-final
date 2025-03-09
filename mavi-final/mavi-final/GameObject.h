@@ -5,6 +5,7 @@
 class GameObject
 {
 protected:
+	bool m_isActive;
 	sf::Vector2f m_position;
 	sf::Vector2f m_scale;
 
@@ -13,5 +14,6 @@ public:
 	virtual void Update(float dt) = 0;
 	virtual sf::FloatRect GetCollider() = 0;
 	virtual sf::Sprite Draw() = 0;
+	bool GetIsActive() { return m_isActive; }
 };
 

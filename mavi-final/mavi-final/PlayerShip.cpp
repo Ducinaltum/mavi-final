@@ -3,18 +3,25 @@
 #include "Extensions.h"
 #include <iostream>
 #include "Globals.h"
+#include "GameplayManager.cpp"
 
-PlayerShip::PlayerShip() : GameObject(), m_velocity(), m_texture(), m_sprite()
+PlayerShip::PlayerShip(float targetWidth) : GameObject(), m_velocity(), m_texture(), m_sprite()
 {
-	m_speed = 0.001f;
+	m_speed = 0.0005f;
 	m_friction = 0.998f;
-	m_maxSpeed = 1;
+	m_maxSpeed = 0.1f;
 	m_sqrdMaxSpeed = m_maxSpeed * m_maxSpeed;
 	m_shootCooldown = 0.5f;
-	m_actualShootCooldown = 0;
+	m_actualShootCooldown = -1;
 
-	m_texture.loadFromFile("assets/ship.png");
+	m_texture.loadFromFile("assets/gameplay/ship.png");
 	m_sprite.setTexture(m_texture);
+	float scale = Extensions::GetTargetScale(targetWidth, m_texture);
+	m_sprite.setScale(scale, scale);
+	m_bulletsSpawnPoint.x = targetWidth;
+	m_bulletsSpawnPoint.y = (m_texture.getSize().y * scale) / 2;
+	m_position.x = m_sprite.getGlobalBounds().width; //One ship to the border of screen
+	m_position.y = (TARGET_HEIGHT / 2) - (m_sprite.getGlobalBounds().height / 2);
 }
 
 void PlayerShip::Update(float dt)
@@ -29,32 +36,38 @@ void PlayerShip::Update(float dt)
 		float ratio = m_sqrdMaxSpeed / sqrdVelocityMagnitude;
 		m_velocity *= ratio;
 	}
-
 	if (Input::InputHandler::Action1.GetButtonDown()
 		&& m_actualShootCooldown < 0)
 	{
-		//Shoot
+		std::cout << "Shoot" << std::endl;
 		m_actualShootCooldown = m_shootCooldown;
+		Bullet * b = GameplayManager::Instance().GetBullet();
+		if (b != nullptr)
+			b->Activate(m_position + m_bulletsSpawnPoint);
+		else
+			std::cout << "Bullet is NULL" << std::endl;
 	}
 
 
 	m_position += m_velocity;
+
+	//sf::Vector2f pixelSize = Extensions::GetPixelSize(m_sprite);
 	if (m_position.x < 0)
 	{
 		m_position.x = 0;
 	}
-	else if (m_position.x > TARGET_WIDTH - 100)
+	else if (m_position.x > TARGET_WIDTH - m_sprite.getGlobalBounds().width)
 	{
-		m_position.x = (float)TARGET_WIDTH - 100;
+		m_position.x = (float)TARGET_WIDTH - m_sprite.getGlobalBounds().width;
 	}
 
 	if (m_position.y < 0)
 	{
 		m_position.y = 0;
 	}
-	else if (m_position.y > TARGET_HEIGHT - 100)
+	else if (m_position.y > TARGET_HEIGHT - m_sprite.getGlobalBounds().height)
 	{
-		m_position.y = (float)TARGET_HEIGHT - 100;
+		m_position.y = (float)TARGET_HEIGHT - m_sprite.getGlobalBounds().height;
 	}
 
 	m_actualShootCooldown -= dt;

@@ -145,11 +145,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="ButtonState.cpp" />
     <ClCompile Include="Extensions.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Gameplay.cpp" />
+    <ClCompile Include="GameplayManager.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="mavi-final.cpp" />
@@ -157,6 +159,7 @@
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="ButtonState.h" />
     <ClInclude Include="Extensions.h" />
     <ClInclude Include="Game.h" />
