@@ -12,7 +12,6 @@ private:
 	float m_actualShootCooldown;
 
 	sf::Vector2f m_velocity;
-	sf::Vector2f m_realSize;
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
 
@@ -20,7 +19,7 @@ private:
 public:
 	PlayerShip(float targetWidth);
 	void Update(float dt) override;
-	sf::FloatRect GetCollider() override;
+	void OnCollision(GameObject* other) override;
 	sf::Sprite Draw() override;
 };
 

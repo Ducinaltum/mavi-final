@@ -1,7 +1,9 @@
 #pragma once
 #include "GameObject.h"
+#include "IDisposable.h"
+
 class Bullet :
-    public GameObject
+    public GameObject, IDisposable
 {
 private:
     float m_speed;
@@ -12,11 +14,10 @@ public:
     Bullet(float targetWidth);
     // Inherited via GameObject
     void Update(float dt) override;
-    sf::FloatRect GetCollider() override;
     sf::Sprite Draw() override;
 
     void Activate(sf::Vector2f position);
-    void Dispose();
+    void Dispose() override;
 
 };
 

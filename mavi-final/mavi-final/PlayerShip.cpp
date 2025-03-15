@@ -3,7 +3,7 @@
 #include "Extensions.h"
 #include <iostream>
 #include "Globals.h"
-#include "GameplayManager.cpp"
+#include "ObjectPool.cpp"
 
 PlayerShip::PlayerShip(float targetWidth) : GameObject(), m_velocity(), m_texture(), m_sprite()
 {
@@ -22,6 +22,7 @@ PlayerShip::PlayerShip(float targetWidth) : GameObject(), m_velocity(), m_textur
 	m_bulletsSpawnPoint.y = (m_texture.getSize().y * scale) / 2;
 	m_position.x = m_sprite.getGlobalBounds().width; //One ship to the border of screen
 	m_position.y = (TARGET_HEIGHT / 2) - (m_sprite.getGlobalBounds().height / 2);
+	m_colliders.push_back(m_sprite.getGlobalBounds());
 }
 
 void PlayerShip::Update(float dt)
@@ -41,7 +42,7 @@ void PlayerShip::Update(float dt)
 	{
 		std::cout << "Shoot" << std::endl;
 		m_actualShootCooldown = m_shootCooldown;
-		Bullet * b = GameplayManager::Instance().GetBullet();
+		Bullet * b = ObjectPool<Bullet>::Instance().GetBullet();
 		if (b != nullptr)
 			b->Activate(m_position + m_bulletsSpawnPoint);
 		else
@@ -73,9 +74,9 @@ void PlayerShip::Update(float dt)
 	m_actualShootCooldown -= dt;
 }
 
-sf::FloatRect PlayerShip::GetCollider()
+
+void PlayerShip::OnCollision(GameObject * other)
 {
-	return sf::FloatRect();
 }
 
 sf::Sprite PlayerShip::Draw()

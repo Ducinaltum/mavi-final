@@ -1,4 +1,4 @@
-#include "GameplayManager.cpp"
+#include "ObjectPool.cpp"
 #include "Bullet.h"
 #include "Extensions.h"
 #include "Globals.h"
@@ -11,7 +11,8 @@ Bullet::Bullet(float targetWidth): GameObject(), m_velocity(), m_texture(), m_sp
 	float scale = Extensions::GetTargetScale(targetWidth, m_texture);
 	m_sprite.setScale(scale, scale);
 	m_velocity.x = m_speed;
-	GameplayManager::Instance().DisposeBullet(this);
+	m_colliders.push_back(m_sprite.getGlobalBounds());
+	ObjectPool<Bullet>::Instance().Dispose(this);
 }
 
 void Bullet::Update(float dt)
@@ -19,13 +20,8 @@ void Bullet::Update(float dt)
 	m_position += m_velocity;
 	if (m_position.x > TARGET_WIDTH)
 	{
-		GameplayManager::Instance().DisposeBullet(this);
+		ObjectPool<Bullet>::Instance().Dispose(this);
 	}
-}
-
-sf::FloatRect Bullet::GetCollider()
-{
-	return sf::FloatRect();
 }
 
 sf::Sprite Bullet::Draw()
@@ -36,8 +32,6 @@ sf::Sprite Bullet::Draw()
 
 void Bullet::Activate(sf::Vector2f position)
 {
-	std::cout << "Activate bullet " << this << " at " << 
-		position.x << " " << position.y << std::endl;
 	m_isActive = true;
 	m_position = position;
 }
@@ -45,5 +39,4 @@ void Bullet::Activate(sf::Vector2f position)
 void Bullet::Dispose()
 {
 	m_isActive = false;
-	std::cout << "Dispose bullet" << this <<std::endl;
 }
