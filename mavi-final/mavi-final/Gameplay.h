@@ -5,6 +5,8 @@
 #include "PlayerShip.h"
 #include "Bullet.h"
 #include "EnemyRed.h"
+#include "EnemyOrange.h"
+#include "EnemyGreen.h"
 
 class Gameplay :
     public Scene

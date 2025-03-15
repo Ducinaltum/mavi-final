@@ -74,6 +74,7 @@ void Game::ProcessEvent(Event& evt)
 
 void Game::ProcessCollisions()
 {
+	m_activeScene->ProcessCollisions();
 }
 
 void Game::UpdateGame(float dt)

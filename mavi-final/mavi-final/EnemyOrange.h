@@ -2,9 +2,8 @@
 #include "GameObject.h"
 #include "Enemy.h"
 
-
-class EnemyRed :
-    public GameObject, public Enemy
+class EnemyOrange :
+	public GameObject, public Enemy
 {
 private:
 	sf::Vector2f m_velocity;
@@ -13,9 +12,8 @@ private:
 	sf::Sprite m_sprite;
 
 public:
-	EnemyRed(float targetWidth, float startHealth);
+	EnemyOrange(float targetWidth, float startHealth);
 	void Update(float dt) override;
 	sf::Sprite Draw() override;
 	void OnCollision(GameObject* other) override;
 };
-

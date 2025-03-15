@@ -6,6 +6,7 @@
 Bullet::Bullet(float targetWidth): GameObject(), m_velocity(), m_texture(), m_sprite()
 {
 	m_speed = 0.2f;
+	m_damage = 10;
 	m_texture.loadFromFile("assets/gameplay/bullet.png");
 	m_sprite.setTexture(m_texture);
 	float scale = Extensions::GetTargetScale(targetWidth, m_texture);
@@ -24,10 +25,20 @@ void Bullet::Update(float dt)
 	}
 }
 
+void Bullet::OnCollision(GameObject* other)
+{
+	ObjectPool<Bullet>::Instance().Dispose(this);
+}
+
 sf::Sprite Bullet::Draw()
 {
 	m_sprite.setPosition(m_position);
 	return m_sprite;
+}
+
+float Bullet::GetDamage()
+{
+	return m_damage;
 }
 
 void Bullet::Activate(sf::Vector2f position)

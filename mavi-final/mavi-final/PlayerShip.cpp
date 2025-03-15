@@ -4,8 +4,10 @@
 #include <iostream>
 #include "Globals.h"
 #include "ObjectPool.cpp"
+#include "Enemy.h"
 
-PlayerShip::PlayerShip(float targetWidth) : GameObject(), m_velocity(), m_texture(), m_sprite()
+PlayerShip::PlayerShip(float targetWidth, float startHealth) : 
+	GameObject(), m_health(startHealth), m_velocity(), m_texture(), m_sprite()
 {
 	m_speed = 0.0005f;
 	m_friction = 0.998f;
@@ -52,7 +54,6 @@ void PlayerShip::Update(float dt)
 
 	m_position += m_velocity;
 
-	//sf::Vector2f pixelSize = Extensions::GetPixelSize(m_sprite);
 	if (m_position.x < 0)
 	{
 		m_position.x = 0;
@@ -77,6 +78,14 @@ void PlayerShip::Update(float dt)
 
 void PlayerShip::OnCollision(GameObject * other)
 {
+	if (Enemy* e = dynamic_cast<Enemy*>(other))
+	{
+		m_health.RecieveDamage(25.0f);
+		if (m_health.IsDead())
+		{
+			m_isActive = false;
+		}
+	}
 }
 
 sf::Sprite PlayerShip::Draw()
