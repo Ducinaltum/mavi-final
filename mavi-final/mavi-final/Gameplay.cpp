@@ -4,7 +4,6 @@
 #include "EnemyPurple.h"
 
 Gameplay::Gameplay()
-	//m_wave(0)
 {
 	m_waveIndex = 0;
 	m_playerShip = new PlayerShip(50, 100.f);
@@ -65,7 +64,6 @@ void Gameplay::ProcessCollisions()
 			}
 		}
 	}
-	//std::cout << checks << std::endl;
 }
 
 void Gameplay::Update(float dt)
@@ -97,11 +95,17 @@ void Gameplay::Update(float dt)
 				++i;
 			}
 		}
-		delete m_wave;
-		m_wave = new Wave(m_waveIndex, m_playerShip);
-		for (int i = 0; i < m_wave->GetObjects().size(); i++)
+		m_wave->SpawnNextWave();
+		if (m_wave->RemainsAnyWave())
 		{
-			m_gameObjects.push_back(m_wave->GetObjects()[i]);
+			for (int i = 0; i < m_wave->GetObjects().size(); i++)
+			{
+				m_gameObjects.push_back(m_wave->GetObjects()[i]);
+			}
+		}
+		else
+		{
+			std::cout << "EOG" << std::endl;
 		}
 	}
 }

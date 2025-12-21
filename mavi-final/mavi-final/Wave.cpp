@@ -9,74 +9,51 @@
 
 Wave::Wave(int waveIndex, GameObject* playerShip)
 {
-	EnemyOrange* enemyOrange = new EnemyOrange(128, 10.0f, playerShip);
-	EnemyGreen* enemyGreen = new EnemyGreen(128, 10.0f);
-	EnemyBlue* enemyBlue = new EnemyBlue(128, 10.0f);
-	EnemyPurple* enemyPurple = new EnemyPurple(128, 10.0f);
-	switch (waveIndex)
+	//EnemyOrange* enemyOrange = new EnemyOrange(128, 10.0f, playerShip);
+	//EnemyBlue* enemyBlue = new EnemyBlue(128, 10.0f);
+	//EnemyPurple* enemyPurple = new EnemyPurple(128, 10.0f);
+
+	m_waves =
 	{
-		case 0:
-			//FIRST WAVE
-			{
-				EnemyRed* enemy = new EnemyRed(sf::Vector2f(0, (TARGET_HEIGHT / 2)));
-				m_enemies.push_back(enemy);
-			}
+		{
+			{  EnemyType::Red, sf::Vector2f(0, (TARGET_HEIGHT / 2)) },
+			{  EnemyType::Red, sf::Vector2f(512, (TARGET_HEIGHT / 3)) },
+			{  EnemyType::Red, sf::Vector2f(512, (TARGET_HEIGHT / 3) * 2)},
+			{  EnemyType::Red, sf::Vector2f(1024, (TARGET_HEIGHT / 4))},
+			{  EnemyType::Red, sf::Vector2f(1024, (TARGET_HEIGHT / 4) * 2)},
+			{  EnemyType::Red, sf::Vector2f(1024, (TARGET_HEIGHT / 4) * 3) },
+		},
+		{
+			{ EnemyType::Green, sf::Vector2f(0, (TARGET_HEIGHT / 2)) },
+			{ EnemyType::Red, sf::Vector2f(512, (TARGET_HEIGHT / 3)) },
+			{ EnemyType::Red, sf::Vector2f(512, (TARGET_HEIGHT / 3) * 2) },
+			{ EnemyType::Green, sf::Vector2f(1024, (TARGET_HEIGHT / 4)) },
+			{ EnemyType::Red, sf::Vector2f(1024, (TARGET_HEIGHT / 4) * 2) },
+			{ EnemyType::Green, sf::Vector2f(1024, (TARGET_HEIGHT / 4) * 3) },
+		}
+	};
+}
 
+void Wave::SpawnNextWave()
+{
+	m_enemies.clear();
+	m_currentWaveIndex++;
+	if (m_currentWaveIndex < m_waves.size())
+	{
+		std::vector<EnemySpawn> wave = m_waves[m_currentWaveIndex];
+		for (size_t i = 0; i < wave.size(); i++)
+		{
+			EnemySpawn spawn = wave[i];
+			switch (spawn.Type)
 			{
-				EnemyRed* enemy = new EnemyRed(sf::Vector2f(512, (TARGET_HEIGHT / 3)));
-				m_enemies.push_back(enemy);
+			case EnemyType::Red:
+				m_enemies.push_back(new EnemyRed(spawn.Position));
+				break;
+			case EnemyType::Green:
+				m_enemies.push_back(new EnemyGreen(spawn.Position));
+				break;
 			}
-			{
-				EnemyRed* enemy = new EnemyRed(sf::Vector2f(512, (TARGET_HEIGHT / 3) * 2));
-				m_enemies.push_back(enemy);
-			}
-
-			{
-				EnemyRed* enemy = new EnemyRed(sf::Vector2f(1024, (TARGET_HEIGHT / 4)));
-				m_enemies.push_back(enemy);
-			}
-			{
-				EnemyRed* enemy = new EnemyRed(sf::Vector2f(1024, (TARGET_HEIGHT / 4) * 2));
-				m_enemies.push_back(enemy);
-			}
-			{
-				EnemyRed* enemy = new EnemyRed(sf::Vector2f(1024, (TARGET_HEIGHT / 4) * 3));
-				m_enemies.push_back(enemy);
-			}
-			break;
-		case 1:
-			//SECOND WAVE
-			{
-				EnemyGreen* enemy = new EnemyGreen(sf::Vector2f(0, (TARGET_HEIGHT / 2)));
-				m_enemies.push_back(enemy);
-			}
-
-			{
-				EnemyRed* enemy = new EnemyRed(sf::Vector2f(512, (TARGET_HEIGHT / 3)));
-				m_enemies.push_back(enemy);
-			}
-			{
-				EnemyRed* enemy = new EnemyRed(sf::Vector2f(512, (TARGET_HEIGHT / 3) * 2));
-				m_enemies.push_back(enemy);
-			}
-
-			{
-				EnemyGreen* enemy = new EnemyGreen(sf::Vector2f(1024, (TARGET_HEIGHT / 4)));
-				m_enemies.push_back(enemy);
-			}
-			{
-				EnemyRed* enemy = new EnemyRed(sf::Vector2f(1024, (TARGET_HEIGHT / 4) * 2));
-				m_enemies.push_back(enemy);
-			}
-			{
-				EnemyGreen* enemy = new EnemyGreen(sf::Vector2f(1024, (TARGET_HEIGHT / 4) * 3));
-				m_enemies.push_back(enemy);
-			}
-		break;
-
-			break;
-	default:
-		break;
+		}
 	}
 }
 
@@ -94,4 +71,9 @@ bool Wave::IsCompleted()
 std::vector<GameObject*> Wave::GetObjects()
 {
 	return m_enemies;
+}
+
+bool Wave::RemainsAnyWave()
+{
+	return m_currentWaveIndex < m_waves.size();;
 }
