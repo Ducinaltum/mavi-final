@@ -63,7 +63,6 @@ void Game::Go()
 		m_window.clear(Color(255, 0, 0, 255));
 		m_window.draw(scaledSprite);
 		m_window.display();
-
 	}
 }
 

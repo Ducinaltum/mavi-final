@@ -4,7 +4,7 @@
 #include "Bullet.h"
 #include "PlayerShip.h"
 
-
+//Testing ctor
 EnemyRed::EnemyRed(float targetWidth, float startHealth): 
 	GameObject(), Enemy(startHealth), m_velocity(), m_texture(), m_sprite()
 {
@@ -18,6 +18,21 @@ EnemyRed::EnemyRed(float targetWidth, float startHealth):
 	m_isActive = true;
 	m_colliders.push_back(m_sprite.getGlobalBounds());
 }
+
+EnemyRed::EnemyRed(sf::Vector2f startPosition) :
+	GameObject(), Enemy(10.0f), m_velocity(), m_texture(), m_sprite()
+{
+	m_velocity.x = 100.0f;
+	m_texture.loadFromFile("assets/gameplay/Enemigo1.png");
+	m_sprite.setTexture(m_texture);
+	float scale = Extensions::GetTargetScale(96, m_texture);
+	m_sprite.setScale(scale, scale);
+	m_position.x = TARGET_WIDTH + startPosition.x;
+	m_position.y = startPosition.y - (m_sprite.getGlobalBounds().height / 2);
+	m_isActive = true;
+	m_colliders.push_back(m_sprite.getGlobalBounds());
+}
+
 
 void EnemyRed::Update(float dt)
 {

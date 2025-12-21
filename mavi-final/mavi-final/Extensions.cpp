@@ -11,4 +11,9 @@ namespace Extensions
     {
         return targetWidth / (float) texture.getSize().x;
     }
+    
+    float Lerp(float a, float b, float t)
+    {
+        return a + (b - a) * t;
+    }
 }

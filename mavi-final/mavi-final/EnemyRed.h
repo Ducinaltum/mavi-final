@@ -14,6 +14,7 @@ private:
 
 public:
 	EnemyRed(float targetWidth, float startHealth);
+	EnemyRed(sf::Vector2f startPosition);
 	void Update(float dt) override;
 	sf::Sprite Draw() override;
 	void OnCollision(GameObject* other) override;

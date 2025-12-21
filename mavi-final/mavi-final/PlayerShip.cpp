@@ -42,7 +42,6 @@ void PlayerShip::Update(float dt)
 	if (Input::InputHandler::Action1.GetButtonDown()
 		&& m_actualShootCooldown < 0)
 	{
-		std::cout << "Shoot" << std::endl;
 		m_actualShootCooldown = m_shootCooldown;
 		Bullet * b = ObjectPool<Bullet>::Instance().GetBullet();
 		if (b != nullptr)

@@ -3,10 +3,13 @@
 #include "Extensions.h"
 #include "Bullet.h"
 #include "PlayerShip.h"
+#include <cmath>  // std::lerp
+#include <iostream>
 
-EnemyOrange::EnemyOrange(float targetWidth, float startHealth):
+EnemyOrange::EnemyOrange(float targetWidth, float startHealth, GameObject * playerShip):
 	GameObject(), Enemy(startHealth), m_velocity(), m_texture(), m_sprite()
 {
+	m_playerShip = playerShip;
 	m_velocity.x = 100.0f;
 	m_texture.loadFromFile("assets/gameplay/Enemigo3.png");
 	m_sprite.setTexture(m_texture);
@@ -20,6 +23,8 @@ EnemyOrange::EnemyOrange(float targetWidth, float startHealth):
 
 void EnemyOrange::Update(float dt)
 {
+	float l = Extensions::Lerp(m_position.y, m_position.y - m_playerShip->GetPosition().y, dt);
+	m_velocity.y = l;
 	m_position -= m_velocity * dt;
 }
 

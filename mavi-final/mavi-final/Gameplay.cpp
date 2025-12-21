@@ -3,27 +3,23 @@
 #include "EnemyBlue.h"
 #include "EnemyPurple.h"
 
-
 Gameplay::Gameplay()
+	//m_wave(0)
 {
-	GameObject* playerShip = new PlayerShip(50, 100.f);
+	m_waveIndex = 0;
+	m_playerShip = new PlayerShip(50, 100.f);
+	GameObject* playerShip = m_playerShip;
 	m_gameObjects.push_back(playerShip);
 	for (int i = 0; i < 10; i++)
 	{
 		GameObject* bullet = new Bullet(25);
 		m_gameObjects.push_back(bullet);
 	}
-	EnemyRed* enemyRed = new EnemyRed(128, 10.0f);
-	m_gameObjects.push_back(enemyRed);
-	EnemyOrange* enemyOrange = new EnemyOrange(128, 10.0f);
-	m_gameObjects.push_back(enemyOrange);
-	EnemyGreen* enemyGreen = new EnemyGreen(128, 10.0f);
-	m_gameObjects.push_back(enemyGreen);
-	EnemyBlue* enemyBlue = new EnemyBlue(128, 10.0f);
-	m_gameObjects.push_back(enemyBlue);
-	EnemyPurple* enemyPurple = new EnemyPurple(128, 10.0f);
-	m_gameObjects.push_back(enemyPurple);
-
+	m_wave = new Wave(0, m_playerShip);
+	for (int i = 0; i < m_wave->GetObjects().size(); i++)
+	{
+		m_gameObjects.push_back(m_wave->GetObjects()[i]);
+	}
 	std::cout << m_gameObjects.size() << std::endl;
 }
 
@@ -38,35 +34,38 @@ void Gameplay::ProcessCollisions()
 			for (int j = i + 1; j < m_gameObjects.size(); j++)
 			{
 				GameObject* other = m_gameObjects[j];
-				std::vector<sf::FloatRect> currentColliders = current->GetColliders();
-				std::vector<sf::FloatRect> otherColliders = other->GetColliders();
-				for (sf::FloatRect rect : currentColliders)
+				if (other->GetIsActive())
 				{
-					bool hasCollided = false;
-					rect.left = current->GetPosition().x;
-					rect.top = current->GetPosition().y;
-					for (sf::FloatRect otherRect : otherColliders)
+					std::vector<sf::FloatRect> currentColliders = current->GetColliders();
+					std::vector<sf::FloatRect> otherColliders = other->GetColliders();
+					for (sf::FloatRect rect : currentColliders)
 					{
-						checks++;
-						otherRect.left = other->GetPosition().x;
-						otherRect.top = other->GetPosition().y;
-						if (rect.intersects(otherRect))
+						bool hasCollided = false;
+						rect.left = current->GetPosition().x;
+						rect.top = current->GetPosition().y;
+						for (sf::FloatRect otherRect : otherColliders)
 						{
-							hasCollided = true;
+							checks++;
+							otherRect.left = other->GetPosition().x;
+							otherRect.top = other->GetPosition().y;
+							if (rect.intersects(otherRect))
+							{
+								hasCollided = true;
+								break;
+							}
+						}
+						if (hasCollided)
+						{
+							current->OnCollision(other);
+							other->OnCollision(current);
 							break;
 						}
-					}
-					if (hasCollided)
-					{
-						current->OnCollision(other);
-						other->OnCollision(current);
-						break;
 					}
 				}
 			}
 		}
 	}
-	std::cout << checks << std::endl;
+	//std::cout << checks << std::endl;
 }
 
 void Gameplay::Update(float dt)
@@ -77,6 +76,32 @@ void Gameplay::Update(float dt)
 		if (current->GetIsActive())
 		{
 			current->Update(dt);
+		}
+	}
+
+	if (m_wave->IsCompleted())
+	{
+		m_waveIndex++;
+		for (int i = 0; i < m_gameObjects.size(); )
+		{
+			bool isEnemy = dynamic_cast<Enemy*>(m_gameObjects[i]);
+			if (isEnemy)
+			{
+				delete m_gameObjects[i];
+				if (i != m_gameObjects.size() - 1)
+					m_gameObjects[i] = m_gameObjects.back();
+				m_gameObjects.pop_back();
+			}
+			else
+			{
+				++i;
+			}
+		}
+		delete m_wave;
+		m_wave = new Wave(m_waveIndex, m_playerShip);
+		for (int i = 0; i < m_wave->GetObjects().size(); i++)
+		{
+			m_gameObjects.push_back(m_wave->GetObjects()[i]);
 		}
 	}
 }
