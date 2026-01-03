@@ -2,17 +2,18 @@
 #include "GameObject.h"
 #include "Enemy.h"
 
-enum class MovementState
-{
-	Forward,
-	Backward,
-	EndOfCicle,
-};
 
 class EnemyOrange :
 	public GameObject, public Enemy
 {
 private:
+	enum class MovementState
+	{
+		Forward,
+		Backward,
+		EndOfCicle,
+	};
+
 	GameObject* m_playerShip;
 	MovementState m_state;
 	sf::Vector2f m_velocity;

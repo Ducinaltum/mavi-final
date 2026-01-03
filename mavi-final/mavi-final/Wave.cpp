@@ -78,6 +78,10 @@ Wave::Wave(int waveIndex, GameObject* playerShip)
 			{ EnemyType::Blue, sf::Vector2f(1024 + 256,  (TARGET_HEIGHT / 4)) },
 			{ EnemyType::Blue, sf::Vector2f(1024 + 256,  (TARGET_HEIGHT / 4) * 3) },
 			{ EnemyType::Orange, sf::Vector2f(1024, (TARGET_HEIGHT / 5) * 3) }
+		},
+		//Wave 5 => Boss
+		{
+			{ EnemyType::Purple, sf::Vector2f(0, (TARGET_HEIGHT / 2)) },
 		}
 	};
 }
@@ -105,6 +109,9 @@ void Wave::SpawnNextWave()
 				break;
 			case EnemyType::Blue:
 				m_enemies.push_back(new EnemyBlue(spawn.Position, m_playerShip));
+				break;			
+			case EnemyType::Purple:
+				m_enemies.push_back(new EnemyPurple(spawn.Position));
 				break;
 			}
 		}
