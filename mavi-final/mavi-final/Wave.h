@@ -7,7 +7,10 @@
 enum class EnemyType
 {
 	Red,
-	Green
+	Green,
+	Orange,
+	Blue,
+	Purple
 };
 
 struct EnemySpawn
@@ -25,6 +28,7 @@ private:
 	std::vector<EnemySpawn> m_waveDeifinition;
 	std::vector<WaveDefinition> m_waves;
 	int m_currentWaveIndex = -1;
+	GameObject* m_playerShip;
 public:
 	Wave(int waveIndex, GameObject* playerShip);
 	void SpawnNextWave();

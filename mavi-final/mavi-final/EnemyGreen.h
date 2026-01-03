@@ -16,7 +16,6 @@ private:
 	sf::Sprite m_sprite;
 
 public:
-	EnemyGreen(float targetWidth, float startHealth);
 	EnemyGreen(sf::Vector2f startPosition);
 	void Update(float dt) override;
 	sf::Sprite Draw() override;

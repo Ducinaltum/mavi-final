@@ -4,25 +4,6 @@
 #include "Bullet.h"
 #include "PlayerShip.h"
 
-//Testing ctor
-EnemyGreen::EnemyGreen(float targetWidth, float startHealth) :
-	GameObject(), Enemy(startHealth), m_velocity(), m_texture(), m_sprite()
-{
-	m_verticalAmplitude = 100.0f;
-	m_cicleSpeed = 5.0f;
-	m_cicleSpeedMultiplier = 1 / m_cicleSpeed;
-	m_velocity.x = 100.0f;
-	m_eTime = 0;
-	m_texture.loadFromFile("assets/gameplay/Enemigo2.png");
-	m_sprite.setTexture(m_texture);
-	float scale = Extensions::GetTargetScale(targetWidth, m_texture);
-	m_sprite.setScale(scale, scale);
-	m_position.x = (float)TARGET_WIDTH;
-	m_position.y = (TARGET_HEIGHT / 2) - (m_sprite.getGlobalBounds().height / 2) - 200;
-	m_isActive = true;
-	m_colliders.push_back(m_sprite.getGlobalBounds());
-}
-
 EnemyGreen::EnemyGreen(sf::Vector2f startPosition) :
 	GameObject(), Enemy(10.0), m_velocity(), m_texture(), m_sprite()
 {
@@ -35,8 +16,8 @@ EnemyGreen::EnemyGreen(sf::Vector2f startPosition) :
 	m_sprite.setTexture(m_texture);
 	float scale = Extensions::GetTargetScale(96, m_texture);
 	m_sprite.setScale(scale, scale);
-	m_position.x = (float)TARGET_WIDTH;
-	m_position.y = (TARGET_HEIGHT / 2) - (m_sprite.getGlobalBounds().height / 2) - 200;
+	m_position.x = TARGET_WIDTH + startPosition.x;
+	m_position.y = startPosition.y - (m_sprite.getGlobalBounds().height / 2) + (m_verticalAmplitude / 2);
 	m_isActive = true;
 	m_colliders.push_back(m_sprite.getGlobalBounds());
 }
