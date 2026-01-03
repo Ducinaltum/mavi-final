@@ -28,6 +28,11 @@ void EnemyGreen::Update(float dt)
 
 	m_position -= m_velocity * dt;
 	m_eTime += m_cicleSpeedMultiplier * PI * 2.0f * dt;
+
+	if (m_position.x < 0 - m_sprite.getGlobalBounds().width)
+	{
+		m_isActive = false;
+	}
 }
 
 sf::Sprite EnemyGreen::Draw()

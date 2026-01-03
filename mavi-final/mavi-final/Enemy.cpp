@@ -1,6 +1,7 @@
 #include "Enemy.h"
 
-Enemy::Enemy(float startHealth): m_health(startHealth)
+
+Enemy::Enemy(float startHealth) : m_health(startHealth)
 {
 
 }

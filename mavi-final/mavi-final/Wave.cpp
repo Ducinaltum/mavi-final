@@ -103,6 +103,9 @@ void Wave::SpawnNextWave()
 			case EnemyType::Orange:
 				m_enemies.push_back(new EnemyOrange(spawn.Position, m_playerShip));
 				break;
+			case EnemyType::Blue:
+				m_enemies.push_back(new EnemyBlue(spawn.Position, m_playerShip));
+				break;
 			}
 		}
 	}

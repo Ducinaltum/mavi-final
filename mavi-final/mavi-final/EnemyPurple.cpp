@@ -22,6 +22,11 @@ EnemyPurple::EnemyPurple(float targetWidth, float startHealth) :
 void EnemyPurple::Update(float dt)
 {
 	m_position -= m_velocity * dt;
+
+	if (m_position.x < 0 - m_sprite.getGlobalBounds().width)
+	{
+		m_isActive = false;
+	}
 }
 
 sf::Sprite EnemyPurple::Draw()
