@@ -19,7 +19,8 @@ Gameplay::Gameplay()
 	{
 		m_gameObjects.push_back(m_wave->GetObjects()[i]);
 	}
-	std::cout << m_gameObjects.size() << std::endl;
+	m_hud = new HUD(m_playerShip, m_wave);
+	
 }
 
 void Gameplay::ProcessCollisions()
@@ -108,6 +109,7 @@ void Gameplay::Update(float dt)
 			std::cout << "EOG" << std::endl;
 		}
 	}
+	m_hud->Update(dt);
 }
 
 void Gameplay::Draw(sf::RenderTexture& window)
@@ -120,4 +122,5 @@ void Gameplay::Draw(sf::RenderTexture& window)
 			window.draw(current->Draw());
 		}
 	}
+	m_hud->Draw(window);
 }

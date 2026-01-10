@@ -9,8 +9,7 @@
 
 Wave::Wave(int waveIndex, GameObject* playerShip)
 {
-	//EnemyBlue* enemyBlue = new EnemyBlue(128, 10.0f);
-	//EnemyPurple* enemyPurple = new EnemyPurple(128, 10.0f);
+	m_boss = NULL;
 	m_currentWaveIndex = waveIndex - 1;
 	m_playerShip = playerShip;
 	m_waves =
@@ -111,7 +110,9 @@ void Wave::SpawnNextWave()
 				m_enemies.push_back(new EnemyBlue(spawn.Position, m_playerShip));
 				break;			
 			case EnemyType::Purple:
-				m_enemies.push_back(new EnemyPurple(spawn.Position));
+				EnemyPurple* e = new EnemyPurple(spawn.Position);
+				m_boss = e;
+				m_enemies.push_back(e);
 				break;
 			}
 		}
@@ -137,4 +138,9 @@ std::vector<GameObject*> Wave::GetObjects()
 bool Wave::RemainsAnyWave()
 {
 	return m_currentWaveIndex < m_waves.size();;
+}
+
+Enemy* Wave::GetBoss()
+{
+	return m_boss;
 }

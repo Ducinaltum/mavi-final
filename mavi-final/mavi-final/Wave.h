@@ -3,6 +3,7 @@
 #include <vector>
 #include "GameObject.h"
 #include "PlayerShip.h"
+#include "EnemyPurple.h"
 
 enum class EnemyType
 {
@@ -29,12 +30,14 @@ private:
 	std::vector<WaveDefinition> m_waves;
 	int m_currentWaveIndex = -1;
 	GameObject* m_playerShip;
+	Enemy* m_boss;
 public:
 	Wave(int waveIndex, GameObject* playerShip);
 	void SpawnNextWave();
 	bool IsCompleted();
 	std::vector<GameObject*> GetObjects();
 	bool RemainsAnyWave();
+	Enemy* GetBoss();
 };
 
 

@@ -40,26 +40,6 @@ void Game::Go()
 
 		sf::Sprite scaledSprite(m_renderTarget.getTexture());
 
-		/*
-		// Get window size
-		sf::Vector2u windowSize = m_window.getSize();
-
-		// Calculate scale factor
-		float scaleX = (float)windowSize.x / (float)TARGET_WIDTH;
-		float scaleY = (float)windowSize.y / (float)TARGET_HEIGHT;
-		float scale = std::min(scaleX, scaleY); // Maintain aspect ratio
-
-		// Center the scaled view in the window
-		float scaledWidth = TARGET_WIDTH * scale;
-		float scaledHeight = TARGET_HEIGHT * scale;
-		float offsetX = (windowSize.x - scaledWidth) / 2.0f;
-		float offsetY = (windowSize.y - scaledHeight) / 2.0f;
-
-
-		scaledSprite.setScale(scale, scale);
-		scaledSprite.setPosition(offsetX, offsetY);
-		*/
-
 		m_window.clear(Color(255, 0, 0, 255));
 		m_window.draw(scaledSprite);
 		m_window.display();

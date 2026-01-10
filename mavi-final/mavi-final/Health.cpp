@@ -19,3 +19,8 @@ bool Health::IsDead()
 {
 	return m_isDead;
 }
+
+float Health::GetHealthStatus()
+{
+	return m_currentHealth / m_maxHealth;
+}

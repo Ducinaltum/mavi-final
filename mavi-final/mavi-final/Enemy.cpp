@@ -5,3 +5,8 @@ Enemy::Enemy(float startHealth) : m_health(startHealth)
 {
 
 }
+
+float Enemy::GetHealthStatus()
+{
+    return m_health.GetHealthStatus();
+}

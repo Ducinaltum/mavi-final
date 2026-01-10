@@ -6,7 +6,7 @@
 #include "ObjectPool.cpp"
 #include "Enemy.h"
 
-PlayerShip::PlayerShip(float targetWidth, float startHealth) : 
+PlayerShip::PlayerShip(float targetWidth, float startHealth) :
 	GameObject(), m_health(startHealth), m_velocity(), m_texture(), m_sprite()
 {
 	m_speed = 0.0005f;
@@ -14,7 +14,7 @@ PlayerShip::PlayerShip(float targetWidth, float startHealth) :
 	m_maxSpeed = 0.1f;
 	m_sqrdMaxSpeed = m_maxSpeed * m_maxSpeed;
 	m_shootCooldown = 0.5f;
-	m_actualShootCooldown = -1;
+	m_actualShootCooldown = 1;
 
 	m_texture.loadFromFile("assets/gameplay/ship.png");
 	m_sprite.setTexture(m_texture);
@@ -40,10 +40,10 @@ void PlayerShip::Update(float dt)
 		m_velocity *= ratio;
 	}
 	if (Input::InputHandler::Action1.GetButtonDown()
-		&& m_actualShootCooldown < 0)
+		&& m_actualShootCooldown > m_shootCooldown)
 	{
-		m_actualShootCooldown = m_shootCooldown;
-		Bullet * b = ObjectPool<Bullet>::Instance().GetBullet();
+		m_actualShootCooldown = 0;
+		Bullet* b = ObjectPool<Bullet>::Instance().GetBullet();
 		if (b != nullptr)
 			b->Activate(m_position + m_bulletsSpawnPoint);
 		else
@@ -71,11 +71,11 @@ void PlayerShip::Update(float dt)
 		m_position.y = (float)TARGET_HEIGHT - m_sprite.getGlobalBounds().height;
 	}
 
-	m_actualShootCooldown -= dt;
+	m_actualShootCooldown += dt;
 }
 
 
-void PlayerShip::OnCollision(GameObject * other)
+void PlayerShip::OnCollision(GameObject* other)
 {
 	if (Enemy* e = dynamic_cast<Enemy*>(other))
 	{
@@ -91,4 +91,15 @@ sf::Sprite PlayerShip::Draw()
 {
 	m_sprite.setPosition(m_position);
 	return m_sprite;
+}
+
+float PlayerShip::GetHealthStatus()
+{
+	return m_health.GetHealthStatus();
+}
+
+float PlayerShip::GetCooldownStatus()
+{
+	float cooldownRatio = m_actualShootCooldown / m_shootCooldown;
+	return cooldownRatio > 1 ? 1 : cooldownRatio;
 }

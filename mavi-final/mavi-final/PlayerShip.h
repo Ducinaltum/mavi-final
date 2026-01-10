@@ -24,5 +24,7 @@ public:
 	void Update(float dt) override;
 	void OnCollision(GameObject* other) override;
 	sf::Sprite Draw() override;
+	float GetHealthStatus();
+	float GetCooldownStatus();
 };
 

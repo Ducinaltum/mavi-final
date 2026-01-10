@@ -8,6 +8,7 @@
 #include "EnemyOrange.h"
 #include "EnemyGreen.h"
 #include "Wave.h"
+#include "HUD.h"
 
 class Gameplay :
     public Scene
@@ -16,6 +17,7 @@ private:
 	int m_waveIndex;
 	Wave * m_wave;
 	PlayerShip* m_playerShip;
+	HUD* m_hud;
 
 public:
 	Gameplay();

@@ -7,5 +7,6 @@ protected:
 	Health m_health;
 public:
 	Enemy(float startHealth);
+	float GetHealthStatus();
 };
 
