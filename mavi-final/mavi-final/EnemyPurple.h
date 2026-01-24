@@ -11,6 +11,7 @@ private:
 		Traveling,
 		DoubleSineMovement,
 	};
+	GameObject* m_playerShip;
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_realSize;
 	sf::Texture m_texture;
@@ -26,7 +27,7 @@ private:
 	float m_horizontalTime;
 
 public:
-	EnemyPurple(sf::Vector2f startPosition);
+	EnemyPurple(sf::Vector2f startPosition, GameObject* playerShip, float health);
 	void Update(float dt) override;
 	sf::Sprite Draw() override;
 	void OnCollision(GameObject* other) override;

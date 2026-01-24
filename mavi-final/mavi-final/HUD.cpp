@@ -33,7 +33,9 @@ HUD::HUD(PlayerShip * playerShip, Wave* wave) :
 	m_bossHealthBorder.setOutlineColor(sf::Color::White);
 	m_bossHealthBorder.setOutlineThickness(2);
 	m_bossHealthBorder.setPosition(TARGET_WIDTH - 256 - 24, 24);
-
+	sf::Font* font = new sf::Font();
+	font->loadFromFile("assets/font.ttf");
+	m_shipScore.setFont(*font);
 	m_shipScore.setCharacterSize(24);
 	m_shipScore.setPosition(24, 24);
 	m_shipScore.setFillColor(sf::Color::White);
@@ -44,10 +46,11 @@ void HUD::Update(float dt)
 {
 	m_shipHealth.setScale(m_playerShip->GetHealthStatus(), 1);
 	m_shipCooldown.setScale(m_playerShip->GetCooldownStatus(), 1);
+	m_shipScore.setString(std::to_string(m_playerShip->GetScore()));
 	Enemy* boss = m_wave->GetBoss();
 	if (boss != NULL)
 	{
-		m_shipCooldown.setScale(boss->GetHealthStatus(), 1);
+		m_bossHealth.setScale(boss->GetHealthStatus(), 1);
 	}
 }
 

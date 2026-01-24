@@ -11,6 +11,7 @@ private:
 	float m_friction;
 	float m_shootCooldown;
 	float m_actualShootCooldown;
+	int m_score;
 
 	Health m_health;
 
@@ -26,5 +27,7 @@ public:
 	sf::Sprite Draw() override;
 	float GetHealthStatus();
 	float GetCooldownStatus();
+	void AddScore(int score);
+	int GetScore();
 };
 

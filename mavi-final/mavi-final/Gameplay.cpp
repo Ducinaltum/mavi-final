@@ -14,7 +14,7 @@ Gameplay::Gameplay()
 		GameObject* bullet = new Bullet(25);
 		m_gameObjects.push_back(bullet);
 	}
-	m_wave = new Wave(5, m_playerShip);
+	m_wave = new Wave(1, m_playerShip);
 	for (int i = 0; i < m_wave->GetObjects().size(); i++)
 	{
 		m_gameObjects.push_back(m_wave->GetObjects()[i]);

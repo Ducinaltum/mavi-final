@@ -6,8 +6,8 @@
 #include <cmath>  // std::lerp
 #include <iostream>
 
-EnemyOrange::EnemyOrange(sf::Vector2f startPosition, GameObject* playerShip) :
-	GameObject(), Enemy(10.0), m_velocity(), m_texture(), m_sprite()
+EnemyOrange::EnemyOrange(sf::Vector2f startPosition, GameObject* playerShip, float health) :
+	GameObject(), Enemy(health), m_velocity(), m_texture(), m_sprite()
 {
 	m_playerShip = playerShip;
 	m_state = MovementState::Forward;
@@ -65,6 +65,10 @@ void EnemyOrange::OnCollision(GameObject* other)
 		if (m_health.IsDead())
 		{
 			m_isActive = false;
+			if (PlayerShip* playerShip = dynamic_cast<PlayerShip*>(m_playerShip))
+			{
+				playerShip->AddScore(10);
+			}
 		}
 	}
 	else if (PlayerShip* p = dynamic_cast<PlayerShip*>(other))

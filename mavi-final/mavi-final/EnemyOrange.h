@@ -13,7 +13,6 @@ private:
 		Backward,
 		EndOfCicle,
 	};
-
 	GameObject* m_playerShip;
 	MovementState m_state;
 	sf::Vector2f m_velocity;
@@ -22,7 +21,7 @@ private:
 	sf::Sprite m_sprite;
 
 public:
-	EnemyOrange(sf::Vector2f startPosition, GameObject* playerShip);
+	EnemyOrange(sf::Vector2f startPosition, GameObject* playerShip, float health);
 	void Update(float dt) override;
 	sf::Sprite Draw() override;
 	void OnCollision(GameObject* other) override;

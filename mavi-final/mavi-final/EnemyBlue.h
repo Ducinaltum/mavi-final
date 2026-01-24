@@ -13,7 +13,7 @@ private:
 	sf::Sprite m_sprite;
 
 public:
-	EnemyBlue(sf::Vector2f startPosition, GameObject* playerShip);
+	EnemyBlue(sf::Vector2f startPosition, GameObject* playerShip, float health);
 	void Update(float dt) override;
 	sf::Sprite Draw() override;
 	void OnCollision(GameObject* other) override;

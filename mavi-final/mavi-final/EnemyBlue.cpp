@@ -5,8 +5,8 @@
 #include "PlayerShip.h"
 
 
-EnemyBlue::EnemyBlue(sf::Vector2f startPosition, GameObject* playerShip) :
-	GameObject(), Enemy(10.0), m_velocity(), m_texture(), m_sprite()
+EnemyBlue::EnemyBlue(sf::Vector2f startPosition, GameObject* playerShip, float health) :
+	GameObject(), Enemy(health), m_velocity(), m_texture(), m_sprite()
 {
 	m_playerShip = playerShip;
 
@@ -46,6 +46,10 @@ void EnemyBlue::OnCollision(GameObject* other)
 		if (m_health.IsDead())
 		{
 			m_isActive = false;
+			if (PlayerShip* playerShip = dynamic_cast<PlayerShip*>(m_playerShip))
+			{
+				playerShip->AddScore(10);
+			}
 		}
 	}
 	else if (PlayerShip* p = dynamic_cast<PlayerShip*>(other))

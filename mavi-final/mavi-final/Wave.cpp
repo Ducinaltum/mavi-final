@@ -98,19 +98,19 @@ void Wave::SpawnNextWave()
 			switch (spawn.Type)
 			{
 			case EnemyType::Red:
-				m_enemies.push_back(new EnemyRed(spawn.Position));
+				m_enemies.push_back(new EnemyRed(spawn.Position, m_playerShip, 10.0f));
 				break;
 			case EnemyType::Green:
-				m_enemies.push_back(new EnemyGreen(spawn.Position));
+				m_enemies.push_back(new EnemyGreen(spawn.Position, m_playerShip, 20.0f));
 				break;
 			case EnemyType::Orange:
-				m_enemies.push_back(new EnemyOrange(spawn.Position, m_playerShip));
+				m_enemies.push_back(new EnemyOrange(spawn.Position, m_playerShip, 20.0f));
 				break;
 			case EnemyType::Blue:
-				m_enemies.push_back(new EnemyBlue(spawn.Position, m_playerShip));
-				break;			
+				m_enemies.push_back(new EnemyBlue(spawn.Position, m_playerShip, 30.0f));
+				break;
 			case EnemyType::Purple:
-				EnemyPurple* e = new EnemyPurple(spawn.Position);
+				EnemyPurple* e = new EnemyPurple(spawn.Position, m_playerShip, 100.0f);
 				m_boss = e;
 				m_enemies.push_back(e);
 				break;

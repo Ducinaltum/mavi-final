@@ -103,3 +103,13 @@ float PlayerShip::GetCooldownStatus()
 	float cooldownRatio = m_actualShootCooldown / m_shootCooldown;
 	return cooldownRatio > 1 ? 1 : cooldownRatio;
 }
+
+void PlayerShip::AddScore(int score)
+{
+	m_score += score;
+}
+
+int PlayerShip::GetScore()
+{
+	return m_score;
+}
