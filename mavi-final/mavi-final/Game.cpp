@@ -3,6 +3,7 @@
 #include <iostream>
 #include "InputHandler.h"
 #include "Globals.h"
+#include "GameManager.cpp"
 
 Game::Game(int alto, int ancho, std::string titulo) :
 	m_renderTarget(),
@@ -21,6 +22,12 @@ void Game::Go()
 	Event evt;
 	while (m_window.isOpen())
 	{
+		Scene* s = GameManager::Instance().GetNewScene();
+		if (s != NULL)
+		{
+			delete m_activeScene;
+			m_activeScene = s;
+		}
 		Time dt = deltaClock.restart();
 		float deltaTime = dt.asSeconds();
 		/////Procesar eventos/////

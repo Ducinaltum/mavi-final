@@ -2,10 +2,16 @@
 #include <iostream>
 #include "EnemyBlue.h"
 #include "EnemyPurple.h"
+#include "Parallax.h"
 
 Gameplay::Gameplay()
 {
 	m_waveIndex = 0;
+	Parallax* paralax_0 = new Parallax(0);
+	Parallax* paralax_1 = new Parallax(1);
+	m_gameObjects.push_back(paralax_0);
+	m_gameObjects.push_back(paralax_1);
+
 	m_playerShip = new PlayerShip(50, 100.f);
 	GameObject* playerShip = m_playerShip;
 	m_gameObjects.push_back(playerShip);

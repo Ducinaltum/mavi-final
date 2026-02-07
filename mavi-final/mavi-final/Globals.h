@@ -1,7 +1,7 @@
 #pragma once
 
-const extern unsigned int TARGET_WIDTH;
-const extern unsigned int TARGET_HEIGHT;
-const extern float PI;
+extern const int TARGET_WIDTH;
+extern const int TARGET_HEIGHT;
+extern const float PI;
 
 
