@@ -4,6 +4,8 @@ namespace Input
 	Vector2f InputHandler::Movement1;
 	Vector2f InputHandler::Movement2;
 
+	ButtonState InputHandler::MenuUp;
+	ButtonState InputHandler::MenuDown;
 	ButtonState InputHandler::Action1;
 	ButtonState InputHandler::Action2;
 	ButtonState InputHandler::Action3;
@@ -19,10 +21,12 @@ namespace Input
 		if (Keyboard::isKeyPressed(Keyboard::W))
 		{
 			movY -= 1;
+
 		}
 		if (Keyboard::isKeyPressed(Keyboard::S))
 		{
 			movY += 1;
+
 		}
 		if (Keyboard::isKeyPressed(Keyboard::A))
 		{
@@ -34,6 +38,10 @@ namespace Input
 		}
 		InputHandler::Movement1.x = movX;
 		InputHandler::Movement1.y = movY;
+
+		MenuUp.SetState(Keyboard::isKeyPressed(Keyboard::W));
+		MenuDown.SetState(Keyboard::isKeyPressed(Keyboard::S));
+
 		Action1.SetState(Keyboard::isKeyPressed(Keyboard::Space));
 		Action2.SetState(Keyboard::isKeyPressed(Keyboard::Q));
 		Action3.SetState(Keyboard::isKeyPressed(Keyboard::R));

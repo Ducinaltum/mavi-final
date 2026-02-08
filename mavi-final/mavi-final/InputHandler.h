@@ -12,6 +12,9 @@ namespace Input
 	public:
 		static Vector2f Movement1;
 		static Vector2f Movement2;
+
+		static ButtonState MenuUp;
+		static ButtonState MenuDown;
 		
 		static ButtonState Action1;
 		static ButtonState Action2;

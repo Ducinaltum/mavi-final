@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "MainMenu.h"
 #include "GamePlay.h"
 
 class GameManager
@@ -47,7 +48,7 @@ public:
             switch (m_changeToScene)    
             {
             case GameManager::MAIN_MENU:
-                newScene = new Gameplay();
+                newScene = new MainMenu();
                 break;
             case GameManager::GAMEPLAY:
                 newScene = new Gameplay();

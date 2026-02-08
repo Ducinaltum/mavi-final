@@ -10,7 +10,8 @@ Game::Game(int alto, int ancho, std::string titulo) :
 	m_window(sf::VideoMode(alto, ancho), titulo) //This should be physical screen size
 {
 	m_renderTarget.create(alto, ancho);
-	m_activeScene = new Gameplay();
+	m_activeScene = new MainMenu();
+	//m_activeScene = new Gameplay();
 	Go();
 }
 

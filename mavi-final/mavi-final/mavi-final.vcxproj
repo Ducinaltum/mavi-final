@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="ButtonState.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBlue.cpp" />
@@ -160,18 +161,19 @@
     <ClCompile Include="Gameplay.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="HUD.cpp" />
-    <ClCompile Include="IDisposable.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MainMenuNavigation.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="mavi-final.cpp" />
     <ClCompile Include="Parallax.cpp" />
     <ClCompile Include="PlayerShip.cpp" />
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="ButtonState.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBlue.h" />
@@ -181,7 +183,6 @@
     <ClInclude Include="EnemyRed.h" />
     <ClInclude Include="Extensions.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Gameplay.h" />
     <ClInclude Include="Globals.h" />
@@ -189,6 +190,8 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="IDisposable.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MainMenuNavigation.h" />
     <ClInclude Include="Parallax.h" />
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="resource.h" />

@@ -13,78 +13,99 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de origen\Core">
+      <UniqueIdentifier>{cd2913b6-f0e0-45c2-8cdc-6bed5e5aaf79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Entities">
+      <UniqueIdentifier>{d3a313bb-4d9b-4941-aa9c-5eac68f64e31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Entities\Enemies">
+      <UniqueIdentifier>{90f18a0c-3863-45fc-b066-1529c5404969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Scenes">
+      <UniqueIdentifier>{1109dd5f-3f64-445d-9599-9894dad611d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Scenes\Gameplay">
+      <UniqueIdentifier>{7a89e0a8-5f06-48f7-99c3-01bed58628c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Scenes\MainMenu">
+      <UniqueIdentifier>{b757c963-2013-4929-847c-ce904e0fd4a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mavi-final.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonState.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Gameplay.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerShip.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Extensions.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Globals.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectPool.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyRed.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="IDisposable.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Health.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyOrange.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyGreen.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Entities\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="EnemyBlue.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyGreen.cpp">
+      <Filter>Archivos de origen\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyOrange.cpp">
+      <Filter>Archivos de origen\Entities\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="EnemyPurple.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Wave.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="EnemyRed.cpp">
+      <Filter>Archivos de origen\Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="HUD.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="ButtonState.cpp">
+      <Filter>Archivos de origen\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Parallax.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Extensions.cpp">
+      <Filter>Archivos de origen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Archivos de origen\Core</Filter>
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
+      <Filter>Archivos de origen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Archivos de origen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>Archivos de origen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Archivos de origen\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Archivos de origen\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectPool.cpp">
+      <Filter>Archivos de origen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Archivos de origen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerShip.cpp">
+      <Filter>Archivos de origen\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Wave.cpp">
+      <Filter>Archivos de origen\Scenes\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay.cpp">
+      <Filter>Archivos de origen\Scenes\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Archivos de origen\Scenes\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Archivos de origen\Scenes\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Parallax.cpp">
+      <Filter>Archivos de origen\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuNavigation.cpp">
+      <Filter>Archivos de origen\Scenes\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -155,7 +176,13 @@
     <ClInclude Include="Parallax.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
+    <ClInclude Include="MainMenu.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuNavigation.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
