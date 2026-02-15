@@ -6,7 +6,7 @@
 class GameManager
 {
 public:
-    enum SceneType
+    enum class SceneType
     {
         NONE,
         MAIN_MENU,
@@ -18,8 +18,9 @@ public:
 private:
     GameManager() = default;
     ~GameManager() = default;
+    bool m_quit = false;
 
-    SceneType m_changeToScene;
+    SceneType m_changeToScene = SceneType::MAIN_MENU;
 
     GameManager(const GameManager&) = delete;
     GameManager& operator=(const GameManager&) = delete;
@@ -31,14 +32,14 @@ public:
         return instance;
     }
 
-    void ChangeScene(GameManager::SceneType nextScene)
+    void ChangeScene(SceneType nextScene)
     {
         m_changeToScene = nextScene;
     }
 
     Scene* GetNewScene()
     {
-        if (m_changeToScene == GameManager::SceneType::NONE)
+        if (m_changeToScene == SceneType::NONE)
         {
             return NULL;
         }
@@ -47,21 +48,24 @@ public:
             Scene* newScene = NULL; 
             switch (m_changeToScene)    
             {
-            case GameManager::MAIN_MENU:
+            case SceneType::MAIN_MENU:
                 newScene = new MainMenu();
                 break;
-            case GameManager::GAMEPLAY:
+            case SceneType::GAMEPLAY:
                 newScene = new Gameplay();
                 break;
-            case GameManager::WIN_GAME:
+            case SceneType::WIN_GAME:
                 break;
-            case GameManager::LOOSE_GAME:
+            case SceneType::LOOSE_GAME:
                 break;
             default:
                 break;
             }
-            m_changeToScene = GameManager::SceneType::NONE;
+            m_changeToScene = SceneType::NONE;
             return newScene;
         }
     }
+
+    void QuitGame() { m_quit = true; }
+    bool HasQuited() { return m_quit; }
 };

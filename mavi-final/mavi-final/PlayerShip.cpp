@@ -9,6 +9,7 @@
 PlayerShip::PlayerShip(float targetWidth, float startHealth) :
 	GameObject(), m_health(startHealth), m_velocity(), m_texture(), m_sprite()
 {
+	m_score = 0;
 	m_speed = 0.0005f;
 	m_friction = 0.998f;
 	m_maxSpeed = 0.1f;
@@ -93,9 +94,9 @@ sf::Sprite PlayerShip::Draw()
 	return m_sprite;
 }
 
-float PlayerShip::GetHealthStatus()
+Health * PlayerShip::GetHealth()
 {
-	return m_health.GetHealthStatus();
+	return &m_health;
 }
 
 float PlayerShip::GetCooldownStatus()

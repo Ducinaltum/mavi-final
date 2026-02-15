@@ -31,7 +31,7 @@ void MainMenuNavigation::Update()
 		m_selectableObjects[m_selectedObjectIndex]->Select();
 	}
 
-	if (Input::InputHandler::Confirm.GetButtonDown())
+	if (Input::InputHandler::Confirm.GetButtonDown() || Input::InputHandler::Action1.GetButtonDown())
 	{
 		m_selectableObjects[m_selectedObjectIndex]->Submit();
 	}

@@ -1,5 +1,7 @@
 #include "Gameplay.h"
+#include "Extensions.h"
 #include <iostream>
+#include "GameManager.cpp"
 #include "EnemyBlue.h"
 #include "EnemyPurple.h"
 #include "Parallax.h"
@@ -112,8 +114,13 @@ void Gameplay::Update(float dt)
 		}
 		else
 		{
-			std::cout << "EOG" << std::endl;
+			GameManager::Instance().ChangeScene(GameManager::SceneType::WIN_GAME);
 		}
+	}
+	float playerShipStatus = m_playerShip->GetHealth()->GetStatus();
+	if (Extensions::Approximately(playerShipStatus, 0))
+	{
+		GameManager::Instance().ChangeScene(GameManager::SceneType::LOOSE_GAME);
 	}
 	m_hud->Update(dt);
 }

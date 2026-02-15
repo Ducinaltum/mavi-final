@@ -12,9 +12,9 @@ MainMenu::MainMenu() :
 	m_gameObjects.push_back(paralax_1);
 	GameObject* bullet = new Bullet(25);
 	m_gameObjects.push_back(bullet);
-	Button* playButton = new Button(sf::Vector2f((TARGET_WIDTH / 2), 128));
+	Button* playButton = new Button(sf::Vector2f((TARGET_WIDTH / 2), 128), "PLAY");
 	m_buttons.push_back(playButton);
-	Button* quitButton = new Button(sf::Vector2f((TARGET_WIDTH / 2), 256));
+	Button* quitButton = new Button(sf::Vector2f((TARGET_WIDTH / 2), 256), "QUIT");
 	m_buttons.push_back(quitButton);
 	m_navigation.SetObjects(m_buttons);
 }

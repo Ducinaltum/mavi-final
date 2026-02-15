@@ -44,7 +44,7 @@ HUD::HUD(PlayerShip * playerShip, Wave* wave) :
 
 void HUD::Update(float dt)
 {
-	m_shipHealth.setScale(m_playerShip->GetHealthStatus(), 1);
+	m_shipHealth.setScale(m_playerShip->GetHealth()->GetStatus(), 1);
 	m_shipCooldown.setScale(m_playerShip->GetCooldownStatus(), 1);
 	m_shipScore.setString(std::to_string(m_playerShip->GetScore()));
 	Enemy* boss = m_wave->GetBoss();

@@ -8,7 +8,7 @@ Parallax::Parallax(int index):
 	m_speed = 30;
 	m_texture.loadFromFile("assets/gameplay/Background.png");
 	m_sprite.setTexture(m_texture);
-	float scale = Extensions::GetTargetScale(TARGET_WIDTH, m_texture);
+	float scale = Extensions::GetTargetScale((float)TARGET_WIDTH, m_texture);
 	m_sprite.setScale(scale, scale);
 	//m_position.y = 0;
 	m_position.x = TARGET_WIDTH * index;

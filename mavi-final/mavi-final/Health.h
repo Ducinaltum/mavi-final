@@ -9,6 +9,6 @@ public:
 	Health(float maxHealth);
 	void RecieveDamage(float damage);
 	bool IsDead();
-	float GetHealthStatus();
+	float GetStatus();
 };
 
