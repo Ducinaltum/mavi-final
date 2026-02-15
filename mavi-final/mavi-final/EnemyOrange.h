@@ -23,6 +23,6 @@ private:
 public:
 	EnemyOrange(sf::Vector2f startPosition, GameObject* playerShip, float health);
 	void Update(float dt) override;
-	sf::Sprite Draw() override;
+	void Draw(sf::RenderTexture& rt) override;
 	void OnCollision(GameObject* other) override;
 };

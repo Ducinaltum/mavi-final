@@ -24,7 +24,7 @@ public:
 	PlayerShip(float targetWidth, float startHealth);
 	void Update(float dt) override;
 	void OnCollision(GameObject* other) override;
-	sf::Sprite Draw() override;
+	void Draw(sf::RenderTexture& rt) override;
 	Health * GetHealth();
 	float GetCooldownStatus();
 	void AddScore(int score);

@@ -16,7 +16,7 @@ public:
     // Inherited via GameObject
     void Update(float dt) override;
     void OnCollision(GameObject* other) override;
-    sf::Sprite Draw() override;
+    void Draw(sf::RenderTexture& rt) override;
 
     float GetDamage();
 

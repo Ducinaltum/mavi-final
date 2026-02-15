@@ -11,6 +11,6 @@ private:
 public:
     Parallax(int index);
     void Update(float dt) override;
-    sf::Sprite Draw() override;
+    void Draw(sf::RenderTexture& rt) override;
 };
 

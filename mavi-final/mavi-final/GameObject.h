@@ -15,7 +15,7 @@ public:
 	virtual void Update(float dt) = 0;
 	virtual std::vector<sf::FloatRect> GetColliders() { return m_colliders; }
 	virtual void OnCollision(GameObject * other) {};
-	virtual sf::Sprite Draw() = 0;
+	virtual void Draw(sf::RenderTexture& rt) = 0;
 	bool GetIsActive() { return m_isActive; }
 	sf::Vector2f GetPosition() { return m_position; }
 };

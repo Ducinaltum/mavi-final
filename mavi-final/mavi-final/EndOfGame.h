@@ -1,8 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "MenuNavigation.h"
-#include "Button.h"
-class MainMenu :
+class EndOfGame :
     public Scene
 {
 private:
@@ -10,7 +9,7 @@ private:
 	std::vector<Button*> m_buttons;
 
 public:
-	MainMenu();
+	EndOfGame(bool hasWon);
 	void ProcessCollisions();
 	void Update(float dt);
 	void Draw(sf::RenderTexture& window);

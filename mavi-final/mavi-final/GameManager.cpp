@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "MainMenu.h"
 #include "GamePlay.h"
+#include "EndOfGame.h"
 
 class GameManager
 {
@@ -55,8 +56,10 @@ public:
                 newScene = new Gameplay();
                 break;
             case SceneType::WIN_GAME:
+                newScene = new EndOfGame(true);
                 break;
             case SceneType::LOOSE_GAME:
+                newScene = new EndOfGame(false);
                 break;
             default:
                 break;

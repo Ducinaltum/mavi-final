@@ -1,7 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
-class Button
+class Button:
+	public GameObject
 {
 private:
 	sf::RectangleShape m_buttonBody;

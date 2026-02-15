@@ -148,6 +148,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ButtonState.cpp" />
+    <ClCompile Include="EndOfGame.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBlue.cpp" />
     <ClCompile Include="EnemyGreen.cpp" />
@@ -161,8 +162,9 @@
     <ClCompile Include="Gameplay.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Label.cpp" />
     <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="MainMenuNavigation.cpp" />
+    <ClCompile Include="MenuNavigation.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="InputHandler.cpp" />
@@ -175,6 +177,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ButtonState.h" />
+    <ClInclude Include="EndOfGame.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBlue.h" />
     <ClInclude Include="EnemyGreen.h" />
@@ -190,8 +193,9 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="IDisposable.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Label.h" />
     <ClInclude Include="MainMenu.h" />
-    <ClInclude Include="MainMenuNavigation.h" />
+    <ClInclude Include="MenuNavigation.h" />
     <ClInclude Include="Parallax.h" />
     <ClInclude Include="PlayerShip.h" />
     <ClInclude Include="resource.h" />

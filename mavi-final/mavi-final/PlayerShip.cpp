@@ -88,10 +88,10 @@ void PlayerShip::OnCollision(GameObject* other)
 	}
 }
 
-sf::Sprite PlayerShip::Draw()
+void PlayerShip::Draw(sf::RenderTexture& rt)
 {
 	m_sprite.setPosition(m_position);
-	return m_sprite;
+	rt.draw(m_sprite);
 }
 
 Health * PlayerShip::GetHealth()

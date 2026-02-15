@@ -1,17 +1,17 @@
-#include "MainMenuNavigation.h"
+#include "MenuNavigation.h"
 
-MainMenuNavigation::MainMenuNavigation()
+MenuNavigation::MenuNavigation()
 {
 	m_selectedObjectIndex = 0;
 }
 
-void MainMenuNavigation::SetObjects(std::vector<Button*> selectableObjects)
+void MenuNavigation::SetObjects(std::vector<Button*> selectableObjects)
 {
 	m_selectableObjects = selectableObjects;
 	m_selectableObjects[m_selectedObjectIndex]->Select();
 }
 
-void MainMenuNavigation::Update()
+void MenuNavigation::Update()
 {
 	int currentSelectedObject = m_selectedObjectIndex;
 	if (Input::InputHandler::MenuDown.GetButtonDown())
@@ -37,7 +37,7 @@ void MainMenuNavigation::Update()
 	}
 }
 
-Button* MainMenuNavigation::GetSelectedButton()
+Button* MenuNavigation::GetSelectedButton()
 {
 	return m_selectableObjects[m_selectedObjectIndex];
 }

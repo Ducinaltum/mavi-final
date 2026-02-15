@@ -41,13 +41,13 @@ void Button::Update(float dt)
 	}
 }
 
-void Button::Draw(sf::RenderTexture& window)
+void Button::Draw(sf::RenderTexture& rt)
 {
 	if (m_isSelected)
 	{
-		window.draw(m_buttonBody);
+		rt.draw(m_buttonBody);
 	}
-	window.draw(m_buttonText);
+	rt.draw(m_buttonText);
 }
 
 void Button::Select() 
@@ -70,5 +70,9 @@ void Button::Submit()
 	else if (m_action == "PLAY")
 	{
 		GameManager::Instance().ChangeScene(GameManager::SceneType::GAMEPLAY);
+	}
+	else if (m_action == "CONTINUE")
+	{
+		GameManager::Instance().ChangeScene(GameManager::SceneType::MAIN_MENU);
 	}
 };

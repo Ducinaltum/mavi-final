@@ -23,8 +23,8 @@ void Parallax::Update(float dt)
 	}
 }
 
-sf::Sprite Parallax::Draw()
+void Parallax::Draw(sf::RenderTexture& rt)
 {
 	m_sprite.setPosition(m_position);
-	return m_sprite;
+	rt.draw(m_sprite);
 }

@@ -32,10 +32,10 @@ void EnemyBlue::Update(float dt)
 	}
 }
 
-sf::Sprite EnemyBlue::Draw()
+void EnemyBlue::Draw(sf::RenderTexture& rt)
 {
 	m_sprite.setPosition(m_position);
-	return m_sprite;
+	rt.draw(m_sprite);
 }
 
 void EnemyBlue::OnCollision(GameObject* other)

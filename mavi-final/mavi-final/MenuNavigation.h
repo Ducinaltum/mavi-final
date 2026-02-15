@@ -3,13 +3,13 @@
 #include "InputHandler.h"
 #include "Button.h"
 
-class MainMenuNavigation
+class MenuNavigation
 {
 private:
 	int m_selectedObjectIndex;
 	std::vector<Button*> m_selectableObjects;
 public:
-	MainMenuNavigation();
+	MenuNavigation();
 	void SetObjects(std::vector<Button*> selectableObjects);
 	void Update();
 	Button* GetSelectedButton();

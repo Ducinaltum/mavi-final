@@ -30,10 +30,10 @@ void Bullet::OnCollision(GameObject* other)
 	ObjectPool<Bullet>::Instance().Dispose(this);
 }
 
-sf::Sprite Bullet::Draw()
+void Bullet::Draw(sf::RenderTexture& rt)
 {
 	m_sprite.setPosition(m_position);
-	return m_sprite;
+	rt.draw(m_sprite);
 }
 
 float Bullet::GetDamage()

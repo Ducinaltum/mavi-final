@@ -117,23 +117,22 @@ void Gameplay::Update(float dt)
 			GameManager::Instance().ChangeScene(GameManager::SceneType::WIN_GAME);
 		}
 	}
-	float playerShipStatus = m_playerShip->GetHealth()->GetStatus();
-	if (Extensions::Approximately(playerShipStatus, 0))
+	if (m_playerShip->GetHealth()->IsDead())
 	{
 		GameManager::Instance().ChangeScene(GameManager::SceneType::LOOSE_GAME);
 	}
 	m_hud->Update(dt);
 }
 
-void Gameplay::Draw(sf::RenderTexture& window)
+void Gameplay::Draw(sf::RenderTexture& rt)
 {
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		GameObject* current = m_gameObjects[i];
 		if (current->GetIsActive())
 		{
-			window.draw(current->Draw());
+			current->Draw(rt);
 		}
 	}
-	m_hud->Draw(window);
+	m_hud->Draw(rt);
 }

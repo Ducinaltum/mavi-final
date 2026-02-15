@@ -102,11 +102,17 @@
     <ClCompile Include="Parallax.cpp">
       <Filter>Archivos de origen\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenuNavigation.cpp">
-      <Filter>Archivos de origen\Scenes\MainMenu</Filter>
+    <ClCompile Include="EndOfGame.cpp">
+      <Filter>Archivos de origen\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
+      <Filter>Archivos de origen\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuNavigation.cpp">
+      <Filter>Archivos de origen\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -179,10 +185,16 @@
     <ClInclude Include="MainMenu.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenuNavigation.h">
+    <ClInclude Include="MenuNavigation.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="EndOfGame.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

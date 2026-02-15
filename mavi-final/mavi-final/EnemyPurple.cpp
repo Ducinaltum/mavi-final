@@ -58,10 +58,10 @@ void EnemyPurple::Update(float dt)
 	}
 }
 
-sf::Sprite EnemyPurple::Draw()
+void EnemyPurple::Draw(sf::RenderTexture& rt)
 {
 	m_sprite.setPosition(m_position);
-	return m_sprite;
+	rt.draw(m_sprite);
 }
 
 void EnemyPurple::OnCollision(GameObject* other)

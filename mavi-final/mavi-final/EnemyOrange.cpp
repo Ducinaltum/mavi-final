@@ -51,10 +51,10 @@ void EnemyOrange::Update(float dt)
 	}
 }
 
-sf::Sprite EnemyOrange::Draw()
+void EnemyOrange::Draw(sf::RenderTexture& rt)
 {
 	m_sprite.setPosition(m_position);
-	return m_sprite;
+	rt.draw(m_sprite);
 }
 
 void EnemyOrange::OnCollision(GameObject* other)

@@ -36,10 +36,10 @@ void EnemyGreen::Update(float dt)
 	}
 }
 
-sf::Sprite EnemyGreen::Draw()
+void EnemyGreen::Draw(sf::RenderTexture& rt)
 {
 	m_sprite.setPosition(m_position);
-	return m_sprite;
+	rt.draw(m_sprite);
 }
 
 void EnemyGreen::OnCollision(GameObject* other)
