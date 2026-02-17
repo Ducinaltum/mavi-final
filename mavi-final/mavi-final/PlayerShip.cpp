@@ -5,6 +5,7 @@
 #include "Globals.h"
 #include "ObjectPool.cpp"
 #include "Enemy.h"
+#include "AudioController.cpp"
 
 PlayerShip::PlayerShip(float targetWidth, float startHealth) :
 	GameObject(), m_health(startHealth), m_velocity(), m_texture(), m_sprite()
@@ -44,6 +45,7 @@ void PlayerShip::Update(float dt)
 		&& m_actualShootCooldown > m_shootCooldown)
 	{
 		m_actualShootCooldown = 0;
+		AudioController::Instance().PlaySFX(AudioController::SFX::SHOT);
 		Bullet* b = ObjectPool<Bullet>::Instance().GetBullet();
 		if (b != nullptr)
 			b->Activate(m_position + m_bulletsSpawnPoint);
@@ -72,7 +74,12 @@ void PlayerShip::Update(float dt)
 		m_position.y = (float)TARGET_HEIGHT - m_sprite.getGlobalBounds().height;
 	}
 
+	bool cooldownCompletedOnFrame = m_actualShootCooldown < m_shootCooldown;
 	m_actualShootCooldown += dt;
+	if (cooldownCompletedOnFrame && m_actualShootCooldown > m_shootCooldown)
+	{
+		AudioController::Instance().PlaySFX(AudioController::SFX::RELOAD);		
+	}
 }
 
 
@@ -80,6 +87,7 @@ void PlayerShip::OnCollision(GameObject* other)
 {
 	if (Enemy* e = dynamic_cast<Enemy*>(other))
 	{
+		AudioController::Instance().PlaySFX(AudioController::SFX::COLLISION);
 		m_health.RecieveDamage(25.0f);
 		if (m_health.IsDead())
 		{

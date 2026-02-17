@@ -3,6 +3,7 @@
 #include "Extensions.h"
 #include "Bullet.h"
 #include "PlayerShip.h"
+#include "AudioController.cpp"
 
 
 EnemyBlue::EnemyBlue(sf::Vector2f startPosition, GameObject* playerShip, float health) :
@@ -43,6 +44,7 @@ void EnemyBlue::OnCollision(GameObject* other)
 	if (Bullet* b = dynamic_cast<Bullet*>(other))
 	{
 		m_health.RecieveDamage(b->GetDamage());
+		AudioController::Instance().PlaySFX(AudioController::SFX::EXPLOTION);
 		if (m_health.IsDead())
 		{
 			m_isActive = false;

@@ -4,12 +4,14 @@
 #include "InputHandler.h"
 #include "Globals.h"
 #include "GameManager.cpp"
+#include "AudioController.cpp"
 
 Game::Game(int alto, int ancho, std::string titulo) :
 	m_renderTarget(),
 	m_window(sf::VideoMode(alto, ancho), titulo) //This should be physical screen size
 {
 	m_renderTarget.create(alto, ancho);
+	AudioController::Instance().Initialize();
 	Go();
 }
 
