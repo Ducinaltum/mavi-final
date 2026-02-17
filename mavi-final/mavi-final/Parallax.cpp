@@ -3,14 +3,13 @@
 #include "Globals.h"
 
 Parallax::Parallax(int index):
-	GameObject(), m_texture(), m_sprite()
+	GameObject(), m_sprite()
 {
 	m_speed = 30;
-	m_texture.loadFromFile("assets/gameplay/Background.png");
-	m_sprite.setTexture(m_texture);
-	float scale = Extensions::GetTargetScale((float)TARGET_WIDTH, m_texture);
+	sf::Texture* t = ImagesController::Instance().GetImage("assets/gameplay/Background.png");
+	m_sprite.setTexture(*t);
+	float scale = Extensions::GetTargetScale((float)TARGET_WIDTH, *t);
 	m_sprite.setScale(scale, scale);
-	//m_position.y = 0;
 	m_position.x = TARGET_WIDTH * index;
 }
 

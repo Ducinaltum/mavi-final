@@ -4,15 +4,16 @@
 #include "Bullet.h"
 #include "PlayerShip.h"
 #include "AudioController.cpp"
+#include "ImagesController.cpp"
 
 EnemyRed::EnemyRed(sf::Vector2f startPosition, GameObject* playerShip, float health) :
-	GameObject(), Enemy(health), m_velocity(), m_texture(), m_sprite()
+	GameObject(), Enemy(health)
 {
 	m_playerShip = playerShip;
 	m_velocity.x = 100.0f;
-	m_texture.loadFromFile("assets/gameplay/Enemigo1.png");
-	m_sprite.setTexture(m_texture);
-	float scale = Extensions::GetTargetScale(96, m_texture);
+	sf::Texture* t = ImagesController::Instance().GetImage("assets/gameplay/Enemigo1.png");
+	m_sprite.setTexture(*t);
+	float scale = Extensions::GetTargetScale(96, *t);
 	m_sprite.setScale(scale, scale);
 	m_position.x = TARGET_WIDTH + startPosition.x;
 	m_position.y = startPosition.y - (m_sprite.getGlobalBounds().height / 2);

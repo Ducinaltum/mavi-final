@@ -2,14 +2,15 @@
 #include "Bullet.h"
 #include "Extensions.h"
 #include "Globals.h"
+#include "ImagesController.cpp"
 
-Bullet::Bullet(float targetWidth): GameObject(), m_velocity(), m_texture(), m_sprite()
+Bullet::Bullet(float targetWidth): GameObject(), m_velocity(), m_sprite()
 {
 	m_speed = 0.2f;
 	m_damage = 10;
-	m_texture.loadFromFile("assets/gameplay/bullet.png");
-	m_sprite.setTexture(m_texture);
-	float scale = Extensions::GetTargetScale(targetWidth, m_texture);
+	sf::Texture* t = ImagesController::Instance().GetImage("assets/gameplay/bullet.png");
+	m_sprite.setTexture(*t);
+	float scale = Extensions::GetTargetScale(targetWidth, *t);
 	m_sprite.setScale(scale, scale);
 	m_velocity.x = m_speed;
 	m_colliders.push_back(m_sprite.getGlobalBounds());

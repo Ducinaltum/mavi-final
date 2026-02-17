@@ -6,9 +6,10 @@
 #include "ObjectPool.cpp"
 #include "Enemy.h"
 #include "AudioController.cpp"
+#include "ImagesController.cpp"
 
 PlayerShip::PlayerShip(float targetWidth, float startHealth) :
-	GameObject(), m_health(startHealth), m_velocity(), m_texture(), m_sprite()
+	GameObject(), m_health(startHealth), m_velocity(), m_sprite()
 {
 	m_score = 0;
 	m_speed = 0.0005f;
@@ -18,12 +19,12 @@ PlayerShip::PlayerShip(float targetWidth, float startHealth) :
 	m_shootCooldown = 0.5f;
 	m_actualShootCooldown = 1;
 
-	m_texture.loadFromFile("assets/gameplay/ship.png");
-	m_sprite.setTexture(m_texture);
-	float scale = Extensions::GetTargetScale(targetWidth, m_texture);
+	sf::Texture* t = ImagesController::Instance().GetImage("assets/gameplay/ship.png");
+	m_sprite.setTexture(*t);
+	float scale = Extensions::GetTargetScale(targetWidth, *t);
 	m_sprite.setScale(scale, scale);
 	m_bulletsSpawnPoint.x = targetWidth;
-	m_bulletsSpawnPoint.y = (m_texture.getSize().y * scale) / 2;
+	m_bulletsSpawnPoint.y = (t->getSize().y * scale) / 2;
 	m_position.x = m_sprite.getGlobalBounds().width; //One ship to the border of screen
 	m_position.y = (TARGET_HEIGHT / 2) - (m_sprite.getGlobalBounds().height / 2);
 	m_colliders.push_back(m_sprite.getGlobalBounds());

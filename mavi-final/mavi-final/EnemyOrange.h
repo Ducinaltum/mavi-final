@@ -13,12 +13,7 @@ private:
 		Backward,
 		EndOfCicle,
 	};
-	GameObject* m_playerShip;
 	MovementState m_state;
-	sf::Vector2f m_velocity;
-	sf::Vector2f m_realSize;
-	sf::Texture m_texture;
-	sf::Sprite m_sprite;
 
 public:
 	EnemyOrange(sf::Vector2f startPosition, GameObject* playerShip, float health);

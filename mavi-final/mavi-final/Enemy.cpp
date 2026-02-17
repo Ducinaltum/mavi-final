@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 
-Enemy::Enemy(float startHealth) : m_health(startHealth)
+Enemy::Enemy(float startHealth) : m_velocity(), m_sprite(), m_health(startHealth)
 {
 
 }

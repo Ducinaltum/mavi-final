@@ -5,6 +5,7 @@
 #include "EnemyBlue.h"
 #include "EnemyPurple.h"
 #include "Parallax.h"
+#include "ObjectPool.cpp"
 
 Gameplay::Gameplay()
 {
@@ -29,6 +30,11 @@ Gameplay::Gameplay()
 	}
 	m_hud = new HUD(m_playerShip, m_wave);
 	
+}
+
+Gameplay::~Gameplay()
+{
+	ObjectPool<Bullet>::Instance().Clear();
 }
 
 void Gameplay::ProcessCollisions()

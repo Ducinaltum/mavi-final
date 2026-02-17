@@ -5,6 +5,7 @@
 #include "Globals.h"
 #include "GameManager.cpp"
 #include "AudioController.cpp"
+#include "ImagesController.cpp"
 
 Game::Game(int alto, int ancho, std::string titulo) :
 	m_renderTarget(),
@@ -12,6 +13,7 @@ Game::Game(int alto, int ancho, std::string titulo) :
 {
 	m_renderTarget.create(alto, ancho);
 	AudioController::Instance().Initialize();
+	ImagesController::Instance().Initialize();
 	Go();
 }
 

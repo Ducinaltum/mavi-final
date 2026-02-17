@@ -35,7 +35,7 @@ private:
 			|| !m_shot.loadFromFile("assets/audio/shootSound.wav")
 			|| !m_explotion.loadFromFile("assets/audio/explotionSound.wav")
 			|| !m_reload.loadFromFile("assets/audio/reloadSound.wav")
-			|| !m_music.openFromFile("assets/audio/backgroundMusic.ogg"));
+			|| !m_music.openFromFile("assets/audio/backgroundMusic.ogg"))
 		{
 			return false;
 		}

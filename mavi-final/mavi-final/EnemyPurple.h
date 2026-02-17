@@ -11,11 +11,6 @@ private:
 		Traveling,
 		DoubleSineMovement,
 	};
-	GameObject* m_playerShip;
-	sf::Vector2f m_velocity;
-	sf::Vector2f m_realSize;
-	sf::Texture m_texture;
-	sf::Sprite m_sprite;
 	MovementState m_state;
 	float m_verticalAmplitude;
 	float m_horizontallAmplitude;

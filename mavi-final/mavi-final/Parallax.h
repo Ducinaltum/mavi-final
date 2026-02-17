@@ -1,4 +1,5 @@
 #pragma once
+#include "ImagesController.cpp"
 #include "GameObject.h"
 
 class Parallax :

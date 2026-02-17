@@ -38,4 +38,14 @@ public:
         bullet->Dispose();
         m_bullets.push(bullet);
     }
+
+    void Clear()
+    {
+        while (!m_bullets.empty())
+        {
+            T* b = m_bullets.front();
+            m_bullets.pop();
+            delete b;
+        }
+    }
 };

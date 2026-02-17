@@ -21,6 +21,7 @@ private:
 
 public:
 	Gameplay();
+	~Gameplay();
 	void ProcessCollisions();
 	void Update(float dt);
 	void Draw(sf::RenderTexture& window);

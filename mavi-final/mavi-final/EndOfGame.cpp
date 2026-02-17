@@ -10,7 +10,7 @@ EndOfGame::EndOfGame(bool hasWon)
 	m_gameObjects.push_back(paralax_0);
 	m_gameObjects.push_back(paralax_1);
 
-	sf::String outcome = hasWon ? "WON" : "LOOSE";
+	sf::String outcome = hasWon ? "WON" : "LOST";
 	Label* outcomeLabel = new Label(sf::Vector2f((TARGET_WIDTH / 2), 256), "YOU HAVE " + outcome, 64, true);
 	m_gameObjects.push_back(outcomeLabel);
 
