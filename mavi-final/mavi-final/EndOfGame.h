@@ -9,7 +9,7 @@ private:
 	std::vector<Button*> m_buttons;
 
 public:
-	EndOfGame(bool hasWon);
+	EndOfGame(bool hasWon, int score = 0);
 	void ProcessCollisions();
 	void Update(float dt);
 	void Draw(sf::RenderTexture& window);

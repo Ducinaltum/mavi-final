@@ -3,7 +3,7 @@
 #include "Globals.h"
 #include "Label.h"
 
-EndOfGame::EndOfGame(bool hasWon)
+EndOfGame::EndOfGame(bool hasWon, int score)
 {
 	Parallax* paralax_0 = new Parallax(0);
 	Parallax* paralax_1 = new Parallax(1);
@@ -13,6 +13,8 @@ EndOfGame::EndOfGame(bool hasWon)
 	sf::String outcome = hasWon ? "WON" : "LOST";
 	Label* outcomeLabel = new Label(sf::Vector2f((TARGET_WIDTH / 2), 256), "YOU HAVE " + outcome, 64, true);
 	m_gameObjects.push_back(outcomeLabel);
+	Label* scoreLabel = new Label(sf::Vector2f((TARGET_WIDTH / 2), 384), "Your score was: " + std::to_string(score), 32, true);
+	m_gameObjects.push_back(scoreLabel);
 
 	Button* continueButton = new Button(sf::Vector2f((TARGET_WIDTH / 2), TARGET_HEIGHT - 128), "CONTINUE");
 	m_buttons.push_back(continueButton);

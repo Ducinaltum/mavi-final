@@ -39,6 +39,3 @@ public:
 	bool RemainsAnyWave();
 	Enemy* GetBoss();
 };
-
-
-

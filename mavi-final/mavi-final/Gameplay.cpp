@@ -10,6 +10,7 @@
 
 Gameplay::Gameplay()
 {
+	GameManager::Instance().SetPlayerScore(0);
 	m_waveIndex = 0;
 	Parallax* paralax_0 = new Parallax(0);
 	Parallax* paralax_1 = new Parallax(1);
@@ -129,11 +130,13 @@ void Gameplay::Update(float dt)
 		}
 		else
 		{
+			GameManager::Instance().SetPlayerScore(m_playerShip->GetScore());
 			GameManager::Instance().ChangeScene(GameManager::SceneType::WIN_GAME);
 		}
 	}
 	if (m_playerShip->GetHealth()->IsDead())
 	{
+		GameManager::Instance().SetPlayerScore(m_playerShip->GetScore());
 		GameManager::Instance().ChangeScene(GameManager::SceneType::LOOSE_GAME);
 	}
 	m_hud->Update(dt);

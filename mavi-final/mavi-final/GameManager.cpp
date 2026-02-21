@@ -20,6 +20,7 @@ private:
     GameManager() = default;
     ~GameManager() = default;
     bool m_quit = false;
+    int m_playerScore = 0;
 
     SceneType m_changeToScene = SceneType::MAIN_MENU;
 
@@ -31,6 +32,11 @@ public:
     {
         static GameManager instance;
         return instance;
+    }
+
+    void SetPlayerScore(int value)
+    {
+        m_playerScore = value;
     }
 
     void ChangeScene(SceneType nextScene)
@@ -56,10 +62,10 @@ public:
                 newScene = new Gameplay();
                 break;
             case SceneType::WIN_GAME:
-                newScene = new EndOfGame(true);
+                newScene = new EndOfGame(true, m_playerScore);
                 break;
             case SceneType::LOOSE_GAME:
-                newScene = new EndOfGame(false);
+                newScene = new EndOfGame(false, m_playerScore);
                 break;
             default:
                 break;
