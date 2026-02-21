@@ -32,10 +32,10 @@ HUD::HUD(PlayerShip * playerShip, Wave* wave) :
 	m_shipCooldownBorder.setOutlineThickness(2);
 	m_shipCooldownBorder.setPosition((TARGET_WIDTH / 2) - 96, TARGET_HEIGHT - 64);
 
-	m_bossHealth.setFillColor(sf::Color::Red);
+	m_bossHealth.setFillColor(healthColor);
 	m_bossHealth.setPosition(TARGET_WIDTH - 256 - 24, 24);
-	m_bossHealthBorder.setFillColor(sf::Color::Blue);
-	m_bossHealthBorder.setOutlineColor(sf::Color::White);
+	m_bossHealthBorder.setFillColor(containerFill);
+	m_bossHealthBorder.setOutlineColor(containerBorder);
 	m_bossHealthBorder.setOutlineThickness(2);
 	m_bossHealthBorder.setPosition(TARGET_WIDTH - 256 - 24, 24);
 	sf::Font* font = new sf::Font();

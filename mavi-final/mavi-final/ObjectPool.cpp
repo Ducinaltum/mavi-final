@@ -43,9 +43,7 @@ public:
     {
         while (!m_entities.empty())
         {
-            T* b = m_entities.front();
             m_entities.pop();
-            delete b;
         }
     }
 };
