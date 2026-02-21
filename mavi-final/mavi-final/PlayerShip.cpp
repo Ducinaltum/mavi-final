@@ -30,12 +30,21 @@ PlayerShip::PlayerShip(float targetWidth, float startHealth) :
 	m_colliders.push_back(m_sprite.getGlobalBounds());
 }
 
+//Acá encontramos el MRUV
+//El valor de aceleración lo otorga el Input
+//A su vez, encontramos el valor friction, que opera como un coeficiente de desaceleración
 void PlayerShip::Update(float dt)
 {
 	Vector2f movement = Input::InputHandler::Movement1 * m_speed;
+	//Movement opera como aceleración, aunque varía cada frame
+	//Podemos pensar que si el jugador mantiene apretado en una sola dirección, por ejemplo, a la derecha:
+	//    => a.x = 1 * m_speed
+	//       a.y = 0 * m_speed
 	m_velocity += movement;
+	//La fricción actuá como una desaceleración
 	m_velocity *= m_friction;
 
+	//Usamos el cuadrado para no usar raiz cuadrada
 	float sqrdVelocityMagnitude = Extensions::SqrdMagnitude(m_velocity);
 	if (sqrdVelocityMagnitude > m_sqrdMaxSpeed)
 	{
@@ -57,6 +66,7 @@ void PlayerShip::Update(float dt)
 
 	m_position += m_velocity;
 
+	//Limites en pantalla
 	if (m_position.x < 0)
 	{
 		m_position.x = 0;
@@ -75,6 +85,7 @@ void PlayerShip::Update(float dt)
 		m_position.y = (float)TARGET_HEIGHT - m_sprite.getGlobalBounds().height;
 	}
 
+	//Notificación de recarga completa
 	bool cooldownCompletedOnFrame = m_actualShootCooldown < m_shootCooldown;
 	m_actualShootCooldown += dt;
 	if (cooldownCompletedOnFrame && m_actualShootCooldown > m_shootCooldown)
@@ -108,6 +119,7 @@ Health * PlayerShip::GetHealth()
 	return &m_health;
 }
 
+//Devuelve el estado del cooldown como un ratio
 float PlayerShip::GetCooldownStatus()
 {
 	float cooldownRatio = m_actualShootCooldown / m_shootCooldown;

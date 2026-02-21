@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/String.hpp>
 
+//Esto es un singleton que carga y devuelve las imágenes del juego de manera centralizada
 class ImagesController {
 private:
 	ImagesController() = default;

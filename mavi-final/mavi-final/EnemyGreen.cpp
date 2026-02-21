@@ -25,6 +25,7 @@ EnemyGreen::EnemyGreen(sf::Vector2f startPosition, GameObject* playerShip, float
 	m_colliders.push_back(m_sprite.getGlobalBounds());
 }
 
+//En su update, este enemigo realiza un movimiento sinusoidal desde el punto de nacimiento
 void EnemyGreen::Update(float dt)
 {
 	m_velocity.y = m_verticalAmplitude * sin(m_eTime);

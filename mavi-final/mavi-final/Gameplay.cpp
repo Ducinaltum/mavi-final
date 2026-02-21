@@ -19,7 +19,7 @@ Gameplay::Gameplay()
 	m_gameObjects.push_back(paralax_1);
 	m_gameObjects.push_back(xp);
 
-	m_playerShip = new PlayerShip(50, 100.f);
+	m_playerShip = new PlayerShip(64, 100.f);
 	GameObject* playerShip = m_playerShip;
 	m_gameObjects.push_back(playerShip);
 	for (int i = 0; i < 10; i++)
@@ -45,6 +45,7 @@ Gameplay::Gameplay()
 Gameplay::~Gameplay()
 {
 	ObjectPool<Bullet>::Instance().Clear();
+	ObjectPool<Explotion>::Instance().Clear();
 }
 
 void Gameplay::ProcessCollisions()

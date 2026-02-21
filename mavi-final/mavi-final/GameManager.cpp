@@ -4,6 +4,7 @@
 #include "GamePlay.h"
 #include "EndOfGame.h"
 
+//Esta clase se encarga de recibir llamados a cambiar de escena y de gestionar el cambio de las mismas
 class GameManager
 {
 public:

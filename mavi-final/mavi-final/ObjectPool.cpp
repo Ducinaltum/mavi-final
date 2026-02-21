@@ -11,7 +11,7 @@ private:
     ~ObjectPool() {}                // Private destructor
     ObjectPool(const ObjectPool&) = delete; // Prevent copy
     void operator=(const ObjectPool&) = delete; // Prevent assignment
-    std::queue<T*> m_bullets;
+    std::queue<T*> m_entities;
 
 public:
     // Get the single instance
@@ -23,28 +23,28 @@ public:
 
     T * GetElement()
     {
-        if (m_bullets.empty())
+        if (m_entities.empty())
         {
             std::cout << "We are short of bullets" << std::endl;
             return NULL;
         }
-        T* b = m_bullets.front();
-        m_bullets.pop();
+        T* b = m_entities.front();
+        m_entities.pop();
         return b;
     }
 
-    void Dispose(T * bullet)
+    void Dispose(T * entity)
     {
-        bullet->Dispose();
-        m_bullets.push(bullet);
+        entity->Dispose();
+        m_entities.push(entity);
     }
 
     void Clear()
     {
-        while (!m_bullets.empty())
+        while (!m_entities.empty())
         {
-            T* b = m_bullets.front();
-            m_bullets.pop();
+            T* b = m_entities.front();
+            m_entities.pop();
             delete b;
         }
     }

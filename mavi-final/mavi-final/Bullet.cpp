@@ -5,6 +5,7 @@
 #include "ImagesController.cpp"
 #include "Explotion.h"
 
+//Bullet implementa IDispoable para poder enviarse y requerirse de una pool
 Bullet::Bullet(float targetWidth) : GameObject(), m_velocity(), m_sprite()
 {
 	m_speed = 0.2f;
@@ -18,6 +19,7 @@ Bullet::Bullet(float targetWidth) : GameObject(), m_velocity(), m_sprite()
 	ObjectPool<Bullet>::Instance().Dispose(this);
 }
 
+//En su update, esta entidad se mueve de manera lineal desde un lado de la pantalla al otro
 void Bullet::Update(float dt)
 {
 	m_position += m_velocity;

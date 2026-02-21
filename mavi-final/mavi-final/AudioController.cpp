@@ -1,6 +1,7 @@
 #include <SFML/Audio.hpp>
 #pragma once
 
+//Esto es un singleton que carga y reproduce los sonidos del juego de manera centralizada
 class AudioController
 {
 public:

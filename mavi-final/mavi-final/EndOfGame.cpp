@@ -23,9 +23,8 @@ EndOfGame::EndOfGame(bool hasWon, int score)
 	m_navigation.SetObjects(m_buttons);
 }
 
-void EndOfGame::ProcessCollisions()
-{
-}
+//No me gusta dejar esto vacío pero no hay nada que procesar
+void EndOfGame::ProcessCollisions(){}
 
 void EndOfGame::Update(float dt)
 {

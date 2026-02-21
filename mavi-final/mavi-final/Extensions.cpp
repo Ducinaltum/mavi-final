@@ -1,5 +1,6 @@
 #include "Extensions.h"
 
+//Funciones de ayuda
 namespace Extensions
 {
     float SqrdMagnitude(const sf::Vector2f& v)

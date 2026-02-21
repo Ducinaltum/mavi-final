@@ -23,6 +23,7 @@ EnemyBlue::EnemyBlue(sf::Vector2f startPosition, GameObject* playerShip, float h
 	m_colliders.push_back(m_sprite.getGlobalBounds());
 }
 
+//En su update, este enemigo busca posicionarse frente a la nave del jugador
 void EnemyBlue::Update(float dt)
 {
 	m_velocity.y = (m_position.y - m_playerShip->GetPosition().y);

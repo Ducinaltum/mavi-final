@@ -34,6 +34,8 @@ EnemyPurple::EnemyPurple(sf::Vector2f startPosition, GameObject* playerShip, flo
 	m_colliders.push_back(m_sprite.getGlobalBounds());
 }
 
+//En su update, este enemigo busca posicionarse a un tercio de la derecha de la pantalla
+//Luego, comienza a moverse sinusoidalmente en el eje x e y en ondas no sincrónicas
 void EnemyPurple::Update(float dt)
 {
 	if (m_state == MovementState::Traveling)

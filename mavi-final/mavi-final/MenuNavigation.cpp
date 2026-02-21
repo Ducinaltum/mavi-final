@@ -1,5 +1,6 @@
 #include "MenuNavigation.h"
 
+//Se encarga de gestionar cual elemento de la UI marcar como seleccionado al usar el input de Menu Up y Down así como la acción de Submit
 MenuNavigation::MenuNavigation()
 {
 	m_selectedObjectIndex = 0;

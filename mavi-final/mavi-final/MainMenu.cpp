@@ -28,6 +28,7 @@ MainMenu::MainMenu() :
 	m_navigation.SetObjects(m_buttons);
 }
 
+//No me gusta dejar esto vacío pero no hay nada que procesar
 void MainMenu::ProcessCollisions() {};
 
 void MainMenu::Update(float dt)

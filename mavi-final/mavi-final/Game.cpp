@@ -29,6 +29,7 @@ void Game::Go()
 		{
 			m_window.close();
 		}
+		//Cambio de escena si viene alguna nueva
 		Scene* s = GameManager::Instance().GetNewScene();
 		if (s != NULL)
 		{
@@ -43,6 +44,7 @@ void Game::Go()
 			if (evt.type == sf::Event::Closed)
 				m_window.close();
 		}
+		//Procesado de eventos
 		Input::InputHandler::HandleEvents();
 		/////Procesar colisiones/////
 		ProcessCollisions();
@@ -51,18 +53,12 @@ void Game::Go()
 		m_renderTarget.clear(sf::Color::Black);
 		DrawGame();
 		m_renderTarget.display();
-
 		sf::Sprite scaledSprite(m_renderTarget.getTexture());
 
 		m_window.clear(Color(255, 0, 0, 255));
 		m_window.draw(scaledSprite);
 		m_window.display();
 	}
-}
-
-void Game::ProcessEvent(Event& evt)
-{
-
 }
 
 void Game::ProcessCollisions()
@@ -77,8 +73,6 @@ void Game::UpdateGame(float dt)
 
 void Game::DrawGame()
 {
-	//sf::CircleShape shape(20.f);
-	//shape.setFillColor(sf::Color::Green);
 	m_activeScene->Draw(m_renderTarget);
 }
 

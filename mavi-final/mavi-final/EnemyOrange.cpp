@@ -24,6 +24,9 @@ EnemyOrange::EnemyOrange(sf::Vector2f startPosition, GameObject* playerShip, flo
 	m_colliders.push_back(m_sprite.getGlobalBounds());
 }
 
+//En su update, este enemigo avanza en linea recta hasta estar a 100 píxeles del borde derecho de la pantalla
+//Luego se mueve hacia atras (derecha) súbitamente y se acerca al borde inferior o superior de la pantalla
+//Finalmente, retoma el movimiento en liea recta hasta salir de la pantalla
 void EnemyOrange::Update(float dt)
 {
 	if (m_state == MovementState::Backward)

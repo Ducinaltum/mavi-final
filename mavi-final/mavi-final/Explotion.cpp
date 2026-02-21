@@ -3,6 +3,8 @@
 #include "Extensions.h"
 #include "ObjectPool.cpp"
 
+//Es el único elemento del jugo que contiene animación frame by frame.
+//Es un elemento puramente de feedback visual
 Explotion::Explotion(float fps, sf::Vector2i size):
 	GameObject(), m_sprite()
 {

@@ -21,7 +21,8 @@ EnemyRed::EnemyRed(sf::Vector2f startPosition, GameObject* playerShip, float hea
 	m_colliders.push_back(m_sprite.getGlobalBounds());
 }
 
-
+//En su update, este enemigo se mueve de manera lineal desde un lado de la pantalla al otro
+//Cpnsigna: "aplicando conceptos como el MRU (Movimiento Rectilíneo Uniforme)"
 void EnemyRed::Update(float dt)
 {
 	m_position -= m_velocity * dt;

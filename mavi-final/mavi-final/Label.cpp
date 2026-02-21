@@ -15,6 +15,7 @@ Label::Label(sf::Vector2f position, sf::String text, int size, bool isCentered)
 		m_labelText.setPosition(position);
 }
 
+//No me gusta dejarlo vacio, pero hereda de GameObject
 void Label::Update(float dt) {}
 
 void Label::Draw(sf::RenderTexture& window)

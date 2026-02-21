@@ -2,6 +2,10 @@
 #include <iostream>
 using namespace std;
 
+//Registra los cambios de estado de un botón para obtener los tres estados básicos
+//Apretado/suelto
+//Apretado en este frame
+//Suelto en este frame
 namespace Input
 {
 	void ButtonState::SetState(bool newState)

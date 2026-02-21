@@ -1,6 +1,7 @@
 #include "InputHandler.h"
 namespace Input
 {
+	//Maneja los estados de los botones que nos interesan
 	Vector2f InputHandler::Movement1;
 	Vector2f InputHandler::Movement2;
 
