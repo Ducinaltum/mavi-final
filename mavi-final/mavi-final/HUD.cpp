@@ -12,18 +12,23 @@ HUD::HUD(PlayerShip * playerShip, Wave* wave) :
 {
 	m_playerShip = playerShip;
 	m_wave = wave;
+
+	sf::Color healthColor(192, 32, 0);
+	sf::Color containerFill(160, 160, 160);
+	sf::Color containerBorder(sf::Color::White);
+	sf::Color cooldownColor(192,160,0);
 	
-	m_shipHealth.setFillColor(sf::Color::Red);
+	m_shipHealth.setFillColor(healthColor);
 	m_shipHealth.setPosition((TARGET_WIDTH / 2) - 128, TARGET_HEIGHT - 104);
-	m_shipHealthBorder.setFillColor(sf::Color::Blue);
-	m_shipHealthBorder.setOutlineColor(sf::Color::White);
+	m_shipHealthBorder.setFillColor(containerFill);
+	m_shipHealthBorder.setOutlineColor(containerBorder);
 	m_shipHealthBorder.setOutlineThickness(2);
 	m_shipHealthBorder.setPosition((TARGET_WIDTH / 2) - 128, TARGET_HEIGHT - 104);
 
-	m_shipCooldown.setFillColor(sf::Color::Yellow);
+	m_shipCooldown.setFillColor(cooldownColor);
 	m_shipCooldown.setPosition((TARGET_WIDTH / 2) - 96, TARGET_HEIGHT - 64);
-	m_shipCooldownBorder.setFillColor(sf::Color::Blue);
-	m_shipCooldownBorder.setOutlineColor(sf::Color::White);
+	m_shipCooldownBorder.setFillColor(containerFill);
+	m_shipCooldownBorder.setOutlineColor(containerBorder);
 	m_shipCooldownBorder.setOutlineThickness(2);
 	m_shipCooldownBorder.setPosition((TARGET_WIDTH / 2) - 96, TARGET_HEIGHT - 64);
 
