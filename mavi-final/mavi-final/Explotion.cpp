@@ -51,6 +51,8 @@ void Explotion::Activate(sf::Vector2f position)
 {
 	m_isActive = true;
 	m_position = position;
+	m_currentFrame = 0;
+	m_eTime = 0;
 }
 
 void Explotion::Dispose()
