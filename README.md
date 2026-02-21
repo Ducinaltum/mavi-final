@@ -19,37 +19,37 @@
 ## Review
 
 - [x] Programación Orientada a Objetos (POO): 
-	Clases bases:
-		GameObject => Todos los elementos visuales derivan de ella
-		Scene => Las tres escenas derivan de ella
-		Enemy => Los 5 enemigos derivan de ella. Ella misma deriva de GameObject
-		IDisposable => Es esencialmente una interfaz
-	Me hubiera gustado abordar una arquitectura que permita mayor composición, separando objetos updateables, drawables y colisionables. Pero se me re hubiera ido de scope.
+	* Clases bases:
+		* GameObject => Todos los elementos visuales derivan de ella
+		* Scene => Las tres escenas derivan de ella
+		* Enemy => Los 5 enemigos derivan de ella. Ella misma deriva de GameObject
+		* IDisposable => Es esencialmente una interfaz
+	* Me hubiera gustado abordar una arquitectura que permita mayor composición, separando objetos updateables, drawables y colisionables. Pero se me re hubiera ido de scope.
 		
 - [x] Implementación de física: 
-	MRU => Todos los enemigos usan esta movimiento de alguna manera
-		EnemyRed => es su movimiento base en eje x
-		EnemyGreen => es su movimiento base en eje x
-		EnemyOrange => es su movimiento base en eje x, cando va, cuando vuelve y cuando vuelve a ir
-		EnemyBlue => es su movimiento base en eje x
-		EnemyPurple =>  => es su movimiento base en eje x en la acción inicial de posicionarse
-	MRUA (Movimiento Rectilíneo Uniformemente Acelerado) => En la nave del jugador
+	* MRU => Todos los enemigos usan esta movimiento de alguna manera
+		* EnemyRed => es su movimiento base en eje x
+		* EnemyGreen => es su movimiento base en eje x
+		* EnemyOrange => es su movimiento base en eje x, cando va, cuando vuelve y cuando vuelve a ir
+		* EnemyBlue => es su movimiento base en eje x
+		* EnemyPurple =>  => es su movimiento base en eje x en la acción inicial de posicionarse
+	* MRUA (Movimiento Rectilíneo Uniformemente Acelerado) => En la nave del jugador
 - [x] Música y efectos de sonido: 
-	Hay un tema de fondo de los Killers
-	Hay 4 SFX:
-		Disparo
-		Explosión
-		Choque
-		Recarga
+	* Hay un tema de fondo de los Killers
+	* Hay 4 SFX:
+		* Disparo
+		* Explosión
+		* Choque
+		* Recarga
 		
 - [x] Compatibilidad y optimización: 
-	Utilizo delta time en todo
-	Tenía un memory leak en los pool que fue solucionado
+	* Utilizo delta time en todo
+	* Tenía un memory leak en los pool que fue solucionado
 - [x] Función de reinicio
 - [x] Menú y condición de fin
-	Nota: Se agregó navegación por teclas, el juego no admite uso de mouse
+	* Nota: Se agregó navegación por teclas, el juego no admite uso de mouse
 - [x] HUD: 
-	En el HUD podemos ver:
-		Puntaje
-		Salud de la nace
-		Barra de cooldown del cañón
+	* En el HUD podemos ver:
+		* Puntaje
+		* Salud de la nace
+		* Barra de cooldown del cañón
