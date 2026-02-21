@@ -21,7 +21,7 @@ public:
         return instance;
     }
 
-    T * GetBullet()
+    T * GetElement()
     {
         if (m_bullets.empty())
         {

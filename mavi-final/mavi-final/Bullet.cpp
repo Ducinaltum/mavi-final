@@ -3,8 +3,9 @@
 #include "Extensions.h"
 #include "Globals.h"
 #include "ImagesController.cpp"
+#include "Explotion.h"
 
-Bullet::Bullet(float targetWidth): GameObject(), m_velocity(), m_sprite()
+Bullet::Bullet(float targetWidth) : GameObject(), m_velocity(), m_sprite()
 {
 	m_speed = 0.2f;
 	m_damage = 10;
@@ -28,6 +29,13 @@ void Bullet::Update(float dt)
 
 void Bullet::OnCollision(GameObject* other)
 {
+	Explotion* e = ObjectPool<Explotion>::Instance().GetElement();
+	if (e != nullptr)
+	{
+		sf::Vector2f offset(m_sprite.getGlobalBounds().width - m_sprite.getGlobalBounds().height, 0);
+		e->Activate(m_position + offset);
+		e->SetSize(m_sprite.getGlobalBounds().height * 4);
+	}
 	ObjectPool<Bullet>::Instance().Dispose(this);
 }
 

@@ -7,7 +7,7 @@
 #include "ImagesController.cpp"
 
 EnemyRed::EnemyRed(sf::Vector2f startPosition, GameObject* playerShip, float health) :
-	GameObject(), Enemy(health)
+	Enemy(health)
 {
 	m_playerShip = playerShip;
 	m_velocity.x = 100.0f;
@@ -28,36 +28,5 @@ void EnemyRed::Update(float dt)
 	if (m_position.x < 0 - m_sprite.getGlobalBounds().width)
 	{
 		m_isActive = false;
-	}
-}
-
-void EnemyRed::Draw(sf::RenderTexture& rt)
-{
-	m_sprite.setPosition(m_position);
-	rt.draw(m_sprite);
-}
-
-void EnemyRed::OnCollision(GameObject* other)
-{
-	if (Bullet* b = dynamic_cast<Bullet*>(other))
-	{
-		m_health.RecieveDamage(b->GetDamage());
-		AudioController::Instance().PlaySFX(AudioController::SFX::EXPLOTION);
-		if (m_health.IsDead())
-		{
-			m_isActive = false;
-			if (PlayerShip* playerShip = dynamic_cast<PlayerShip*>(m_playerShip))
-			{
-				playerShip->AddScore(10);
-			}
-		}
-	}
-	else if (PlayerShip* p = dynamic_cast<PlayerShip*>(other))
-	{
-		m_health.RecieveDamage(25.0f);
-		if (m_health.IsDead())
-		{
-			m_isActive = false;
-		}
 	}
 }

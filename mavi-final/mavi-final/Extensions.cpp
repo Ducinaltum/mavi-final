@@ -12,6 +12,11 @@ namespace Extensions
         return targetWidth / (float)texture.getSize().x;
     }
 
+    float GetTargetScale(float targetWidth, int rectSize)
+    {
+        return targetWidth / (float)rectSize;
+    }
+
     float Lerp(float a, float b, float t)
     {
         return a + (b - a) * t;

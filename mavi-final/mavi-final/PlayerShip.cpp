@@ -47,7 +47,7 @@ void PlayerShip::Update(float dt)
 	{
 		m_actualShootCooldown = 0;
 		AudioController::Instance().PlaySFX(AudioController::SFX::SHOT);
-		Bullet* b = ObjectPool<Bullet>::Instance().GetBullet();
+		Bullet* b = ObjectPool<Bullet>::Instance().GetElement();
 		if (b != nullptr)
 			b->Activate(m_position + m_bulletsSpawnPoint);
 		else

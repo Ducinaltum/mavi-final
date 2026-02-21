@@ -4,7 +4,7 @@
 
 
 class EnemyOrange :
-	public GameObject, public Enemy
+	public Enemy
 {
 private:
 	enum class MovementState
@@ -18,6 +18,4 @@ private:
 public:
 	EnemyOrange(sf::Vector2f startPosition, GameObject* playerShip, float health);
 	void Update(float dt) override;
-	void Draw(sf::RenderTexture& rt) override;
-	void OnCollision(GameObject* other) override;
 };

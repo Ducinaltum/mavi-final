@@ -156,6 +156,7 @@
     <ClCompile Include="EnemyOrange.cpp" />
     <ClCompile Include="EnemyPurple.cpp" />
     <ClCompile Include="EnemyRed.cpp" />
+    <ClCompile Include="Explotion.cpp" />
     <ClCompile Include="Extensions.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="EnemyOrange.h" />
     <ClInclude Include="EnemyPurple.h" />
     <ClInclude Include="EnemyRed.h" />
+    <ClInclude Include="Explotion.h" />
     <ClInclude Include="Extensions.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />

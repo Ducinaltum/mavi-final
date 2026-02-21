@@ -6,14 +6,17 @@
 #include "EnemyPurple.h"
 #include "Parallax.h"
 #include "ObjectPool.cpp"
+#include "Explotion.h"
 
 Gameplay::Gameplay()
 {
 	m_waveIndex = 0;
 	Parallax* paralax_0 = new Parallax(0);
 	Parallax* paralax_1 = new Parallax(1);
+	Explotion* xp = new Explotion(24.0f);
 	m_gameObjects.push_back(paralax_0);
 	m_gameObjects.push_back(paralax_1);
+	m_gameObjects.push_back(xp);
 
 	m_playerShip = new PlayerShip(50, 100.f);
 	GameObject* playerShip = m_playerShip;
@@ -22,6 +25,12 @@ Gameplay::Gameplay()
 	{
 		GameObject* bullet = new Bullet(25);
 		m_gameObjects.push_back(bullet);
+	}	
+	//Necesitamos el doble de explosiones que de balas
+	for (int i = 0; i < 20; i++)
+	{
+		GameObject* explotion = new Explotion(24.0f);
+		m_gameObjects.push_back(explotion);
 	}
 	m_wave = new Wave(1, m_playerShip);
 	for (int i = 0; i < m_wave->GetObjects().size(); i++)

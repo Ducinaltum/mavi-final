@@ -2,7 +2,7 @@
 #include "Health.h"
 #include "GameObject.h"
 
-class Enemy
+class Enemy: public GameObject
 {
 protected:
 	Health m_health;
@@ -12,6 +12,9 @@ protected:
 	sf::Sprite m_sprite;
 public:
 	Enemy(float startHealth);
+	void Draw(sf::RenderTexture& rt) override;
+	void OnCollision(GameObject* other) override;
 	float GetHealthStatus();
+	void Explode();
 };
 
