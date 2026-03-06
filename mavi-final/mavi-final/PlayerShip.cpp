@@ -12,9 +12,9 @@ PlayerShip::PlayerShip(float targetWidth, float startHealth) :
 	GameObject(), m_health(startHealth), m_velocity(), m_sprite()
 {
 	m_score = 0;
-	m_speed = 0.0005f;
-	m_friction = 0.998f;
-	m_maxSpeed = 0.1f;
+	m_speed = 50.0f;
+	m_friction = 0.98f;
+	m_maxSpeed = 300.0f;
 	m_sqrdMaxSpeed = m_maxSpeed * m_maxSpeed;
 	m_shootCooldown = 0.5f;
 	m_actualShootCooldown = 1;
@@ -64,7 +64,7 @@ void PlayerShip::Update(float dt)
 	}
 
 
-	m_position += m_velocity;
+	m_position += m_velocity * dt;
 
 	//Limites en pantalla
 	if (m_position.x < 0)

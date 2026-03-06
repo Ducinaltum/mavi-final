@@ -8,7 +8,7 @@
 //Bullet implementa IDispoable para poder enviarse y requerirse de una pool
 Bullet::Bullet(float targetWidth) : GameObject(), m_velocity(), m_sprite()
 {
-	m_speed = 0.2f;
+	m_speed = 350.0f;
 	m_damage = 10;
 	sf::Texture* t = ImagesController::Instance().GetImage("assets/gameplay/bullet.png");
 	m_sprite.setTexture(*t);
@@ -22,7 +22,7 @@ Bullet::Bullet(float targetWidth) : GameObject(), m_velocity(), m_sprite()
 //En su update, esta entidad se mueve de manera lineal desde un lado de la pantalla al otro
 void Bullet::Update(float dt)
 {
-	m_position += m_velocity;
+	m_position += m_velocity * dt;
 	if (m_position.x > TARGET_WIDTH)
 	{
 		ObjectPool<Bullet>::Instance().Dispose(this);
